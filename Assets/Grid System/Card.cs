@@ -9,18 +9,21 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     private Vector3 originalSize;
 
+    private Vector3 shrinkSize;
+
     public float shrink;
 
     void Awake()
     {
         originalSize = this.transform.localScale;
+        shrinkSize = originalSize * shrink;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         parent = this.transform.parent;
         this.transform.SetParent(this.transform.parent.parent);
-        this.transform.localScale *= shrink;
+        this.transform.localScale = shrinkSize;
         parent.gameObject.SetActive(false);
     }
 
