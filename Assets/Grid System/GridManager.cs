@@ -13,12 +13,13 @@ public class GridManager : MonoBehaviour
     [SerializeField]
     private Transform cam;
 
-    [SerializeField]
+    private GameObject[,] tiles;
 
     // Start is called before the first frame update
     void Start()
     {
         GenerateGrid();
+        tiles = new GameObject[width, height];
     }
 
     // Update is called once per frame
@@ -30,9 +31,27 @@ public class GridManager : MonoBehaviour
             {
                 var spawnedTile = Instantiate(tilePrefab, new Vector3(x, 0, y), Quaternion.identity);
                 spawnedTile.name = $"Tile {x} {y}";
+                spawnedTile.tag = "Board";
             }
         }
         cam.transform.position = new Vector3((float)width / 2 - .5f, camHeight, (float)height / 2 - .5f);
         cam.transform.Rotate(new Vector3(90, 0, 0));
+    }
+
+    public bool addToList(string name, GameObject card)
+    {
+        Debug.Log(name + card.name);
+        string[] coords = name.Split(' ');
+        int x = int.Parse(coords[1]);
+        int y = int.Parse(coords[2]);
+        if(tiles[x, y] != null)
+        {
+            return false;
+        }
+        else
+        {
+            tiles[x, y] = card; 
+            return true;
+        }
     }
 }

@@ -4,8 +4,4 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    void OnMouseEnter()
-    {
-        //if(Input.GetMouseButtonDown)
-    }
 }

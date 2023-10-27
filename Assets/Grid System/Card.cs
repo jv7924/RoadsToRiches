@@ -5,6 +5,12 @@ using UnityEngine.EventSystems;
 
 public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [SerializeField]
+    private GridManager gridManager;
+
+    [SerializeField]
+    private Color cardFace;
+
     private Transform parent;
 
     private Vector3 originalSize;
@@ -15,27 +21,45 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     void Awake()
     {
-        originalSize = this.transform.localScale;
+        originalSize = transform.localScale;
         shrinkSize = originalSize * shrink;
+        gridManager = FindObjectOfType<GridManager>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        parent = this.transform.parent;
-        this.transform.SetParent(this.transform.parent.parent);
-        this.transform.localScale = shrinkSize;
+        parent = transform.parent;
+        transform.SetParent(transform.parent.parent);
+        transform.localScale = shrinkSize;
         parent.gameObject.SetActive(false);
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        this.transform.position = eventData.position;
+        transform.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        this.transform.localScale = originalSize;
-        this.transform.SetParent(parent);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 1000))
+        {
+            gridManager.addToList(hit.transform.name, gameObject);
+            if(hit.transform.gameObject.CompareTag("Board"))
+            {
+                var renderer = hit.transform.gameObject.GetComponent<Renderer>();
+                renderer.material.SetColor("_Color", cardFace);
+            }
+            Destroy(eventData.pointerDrag);
+        }
+        else
+        {
+            transform.localScale = originalSize;
+            transform.SetParent(parent);
+            GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
         parent.gameObject.SetActive(true);
     }
 }
