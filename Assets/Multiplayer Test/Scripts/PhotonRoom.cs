@@ -15,8 +15,6 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     [Tooltip("Multiplayer scene index"), SerializeField]
     private int multiplayerScene = 1;
-    private PhotonView photonView;
-
     
     #endregion
 
@@ -38,16 +36,16 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         /* 
             Set up singleton, sets photonRoom to this instance, if not this instance delete and set to this instance
         */
-        if (PhotonRoom.photonRoom == null)
+        if (photonRoom == null)
         {
-            PhotonRoom.photonRoom = this;
+            photonRoom = this;
         }
         else
         {
-            if (PhotonRoom.photonRoom != this)
+            if (photonRoom != this)
             {
-                Destroy(PhotonRoom.photonRoom.gameObject);
-                PhotonRoom.photonRoom = this;
+                Destroy(photonRoom.gameObject);
+                photonRoom = this;
             }
         }
 
@@ -57,7 +55,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        photonView = GetComponent<PhotonView>();
+        
     }
 
     // Update is called once per frame
@@ -73,14 +71,12 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     public override void OnEnable()
     {
         base.OnEnable();
-        PhotonNetwork.AddCallbackTarget(this);
         SceneManager.sceneLoaded += OnSceneFinishedLoading;
     }
 
     public override void OnDisable()
     {
         base.OnDisable();
-        PhotonNetwork.RemoveCallbackTarget(this);
         SceneManager.sceneLoaded -= OnSceneFinishedLoading;
     }
 
