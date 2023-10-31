@@ -20,8 +20,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     #region Public fields
     
-    public static PhotonRoom photonRoom;
-
+    public static PhotonRoom Room;
     public int currentScene = 0;
     
     #endregion
@@ -36,32 +35,20 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         /* 
             Set up singleton, sets photonRoom to this instance, if not this instance delete and set to this instance
         */
-        if (photonRoom == null)
+        if (Room == null)
         {
-            photonRoom = this;
+            Room = this;
         }
         else
         {
-            if (photonRoom != this)
+            if (Room != this)
             {
-                Destroy(photonRoom.gameObject);
-                photonRoom = this;
+                Destroy(Room.gameObject);
+                Room = this;
             }
         }
 
         DontDestroyOnLoad(this.gameObject);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     #endregion
@@ -108,7 +95,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
         if (currentScene == multiplayerScene)
         {
-            CreatePlayer();
+            Invoke("CreatePlayer", 2f);
         }
     }
 

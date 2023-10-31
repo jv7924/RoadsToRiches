@@ -10,7 +10,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
 {
     #region Public fields
 
-    public static PhotonLobby lobby;
+    public static PhotonLobby Lobby;
     public GameObject battleButton;
     public GameObject cancelButton;
 
@@ -23,7 +23,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     /// </summary>
     private void Awake()
     {
-        lobby = this;
+        Lobby = this;
     }
 
     // Start is called before the first frame update
@@ -74,7 +74,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         Debug.Log("Trying to create a new room");
 
         int randomRoomName = Random.Range(0, 10000);
-        RoomOptions roomOptions = new RoomOptions() { IsOpen = true, IsVisible = true, MaxPlayers = 2 };
+        RoomOptions roomOptions = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 2 };
         PhotonNetwork.CreateRoom("Room" + randomRoomName, roomOptions);
     }
 
