@@ -13,13 +13,13 @@ public class GridManager : MonoBehaviour
     [SerializeField]
     private Transform cam;
 
-    private GameObject[,] tiles;
+    private Road[,] tiles;
 
     // Start is called before the first frame update
     void Start()
     {
         GenerateGrid();
-        tiles = new GameObject[width, height];
+        tiles = new Road[width, height];
     }
 
     // Update is called once per frame
@@ -35,12 +35,11 @@ public class GridManager : MonoBehaviour
             }
         }
         cam.transform.position = new Vector3((float)width / 2 - .5f, camHeight, (float)height / 2 - .5f);
-        cam.transform.Rotate(new Vector3(90, 0, 0));
+        cam.transform.Rotate(new Vector3(90, 0, 180));
     }
 
-    public bool addToList(string name, GameObject card)
+    public bool addToList(string name, Road road)
     {
-        Debug.Log(name + card.name);
         string[] coords = name.Split(' ');
         int x = int.Parse(coords[1]);
         int y = int.Parse(coords[2]);
@@ -50,7 +49,7 @@ public class GridManager : MonoBehaviour
         }
         else
         {
-            tiles[x, y] = card; 
+            tiles[x, y] = road; 
             return true;
         }
     }

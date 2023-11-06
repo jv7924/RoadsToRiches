@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -9,13 +10,15 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private GridManager gridManager;
 
     [SerializeField]
-    private Color cardFace;
+    private Road road;
 
     private Transform parent;
 
     private Vector3 originalSize;
 
     private Vector3 shrinkSize;
+
+    private bool isDrag;
 
     public float shrink;
 
@@ -26,6 +29,23 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         gridManager = FindObjectOfType<GridManager>();
     }
 
+    void Update()
+    {
+        if(isDrag)
+        {
+            if(Input.GetKeyDown("e"))
+            {
+                transform.Rotate(0, 0, -90);
+                road.RotateClock();
+            }
+            else if(Input.GetKeyDown("q"))
+            {
+                transform.Rotate(0, 0, 90);
+                road.RotateCounterClock();
+            }
+        }
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         parent = transform.parent;
@@ -33,6 +53,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         transform.localScale = shrinkSize;
         parent.gameObject.SetActive(false);
         GetComponent<CanvasGroup>().blocksRaycasts = false;
+        isDrag = true;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -46,11 +67,10 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000))
         {
-            gridManager.addToList(hit.transform.name, gameObject);
+            gridManager.addToList(hit.transform.name, road);
             if(hit.transform.gameObject.CompareTag("Board"))
             {
-                var renderer = hit.transform.gameObject.GetComponent<Renderer>();
-                renderer.material.SetColor("_Color", cardFace);
+                hit.transform.gameObject.GetComponent<Renderer>().material = road.roadSprite;
             }
             Destroy(eventData.pointerDrag);
         }
@@ -61,5 +81,6 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
         parent.gameObject.SetActive(true);
+        isDrag = false;
     }
 }
