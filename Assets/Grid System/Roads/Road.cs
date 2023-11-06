@@ -17,9 +17,6 @@ public class Road : MonoBehaviour
     // Starts at 0 and increases by 90 in the counter-clockwise direction
     protected int rotation;
 
-    [SerializeField]
-    public Material roadSprite;
-
     // Rotates the roads directions by 90 degrees clockwise
     public void RotateClock()
     {

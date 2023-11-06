@@ -12,11 +12,16 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     [SerializeField]
     private Road road;
 
+    [SerializeField]
+    private GameObject tilePrefab;
+
     private Transform parent;
 
     private Vector3 originalSize;
 
     private Vector3 shrinkSize;
+
+    private int rotation;
 
     private bool isDrag;
 
@@ -24,6 +29,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     void Awake()
     {
+        rotation = 0;
         originalSize = transform.localScale;
         shrinkSize = originalSize * shrink;
         gridManager = FindObjectOfType<GridManager>();
@@ -36,11 +42,13 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             if(Input.GetKeyDown("e"))
             {
                 transform.Rotate(0, 0, -90);
+                rotation += 90;
                 road.RotateClock();
             }
             else if(Input.GetKeyDown("q"))
             {
                 transform.Rotate(0, 0, 90);
+                rotation -= 90;
                 road.RotateCounterClock();
             }
         }
@@ -70,7 +78,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             gridManager.addToList(hit.transform.name, road);
             if(hit.transform.gameObject.CompareTag("Board"))
             {
-                hit.transform.gameObject.GetComponent<Renderer>().material = road.roadSprite;
+                GameObject tile = Instantiate(tilePrefab, hit.transform.position, hit.transform.rotation);
+                tile.transform.Rotate(0, rotation, 0);
             }
             Destroy(eventData.pointerDrag);
         }

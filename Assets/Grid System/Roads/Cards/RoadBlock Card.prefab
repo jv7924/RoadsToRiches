@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridManager: {fileID: 0}
   road: {fileID: 1143645144547536783}
+  tilePrefab: {fileID: 7284531818685192310, guid: 0f09d5de396097245b6e0e32feb2f86b, type: 3}
   shrink: 0.5
 --- !u!114 &1143645144547536783
 MonoBehaviour:
