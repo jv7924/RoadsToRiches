@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+using Photon.Pun;
+
 public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField]
@@ -14,6 +16,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     [SerializeField]
     private GameObject tilePrefab;
+
+    public string prefabName;
 
     private Transform parent;
 
@@ -78,7 +82,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             gridManager.addToList(hit.transform.name, road);
             if(hit.transform.gameObject.CompareTag("Board"))
             {
-                GameObject tile = Instantiate(tilePrefab, hit.transform.position, hit.transform.rotation);
+                GameObject tile = PhotonNetwork.Instantiate(prefabName, hit.transform.position, hit.transform.rotation);
                 tile.transform.Rotate(0, rotation, 0);
             }
             Destroy(eventData.pointerDrag);

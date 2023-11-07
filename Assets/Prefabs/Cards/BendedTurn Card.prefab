@@ -114,6 +114,7 @@ MonoBehaviour:
   gridManager: {fileID: 0}
   road: {fileID: 2415464689256881235}
   tilePrefab: {fileID: 7288453631696309828, guid: 98169827f7462244482380f609f74703, type: 3}
+  prefabName: BendedTurn Tile
   shrink: 0.5
 --- !u!114 &2415464689256881235
 MonoBehaviour:
@@ -127,7 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9a60219a36ab149aea8a04aa7deae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadSprite: {fileID: 2100000, guid: 4a1d25a3fbb86ca42acd46a56a914af6, type: 2}
 --- !u!225 &3711699354000423965
 CanvasGroup:
   m_ObjectHideFlags: 0

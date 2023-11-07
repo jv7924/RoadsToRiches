@@ -114,6 +114,7 @@ MonoBehaviour:
   gridManager: {fileID: 0}
   road: {fileID: 7840907719187970370}
   tilePrefab: {fileID: 5486992922669795158, guid: eabbd99842bb2f945bdb0193ebbdd4d5, type: 3}
+  prefabName: Tintersect Tile
   shrink: 0.5
 --- !u!114 &7840907719187970370
 MonoBehaviour:
@@ -127,7 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa84d304fc2e3044c87b899473ba3b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadSprite: {fileID: 2100000, guid: 5ab6d1c5d6c29b34f9665ab69d6f7138, type: 2}
 --- !u!225 &7487562079561877731
 CanvasGroup:
   m_ObjectHideFlags: 0

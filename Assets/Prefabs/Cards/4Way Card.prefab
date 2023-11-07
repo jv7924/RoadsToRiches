@@ -114,6 +114,7 @@ MonoBehaviour:
   gridManager: {fileID: 0}
   road: {fileID: 3085872132799839760}
   tilePrefab: {fileID: 8709500209693573224, guid: 8574a523655b9294898fbeb3e6736fa6, type: 3}
+  prefabName: 4Way Tile
   shrink: 0.5
 --- !u!114 &3085872132799839760
 MonoBehaviour:
@@ -127,7 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 029fda0d99b334d4f8e1113d4ed71031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadSprite: {fileID: 2100000, guid: b8ce3ad31083f1f4cb596bec2a957cf6, type: 2}
 --- !u!225 &5486084079772001713
 CanvasGroup:
   m_ObjectHideFlags: 0
