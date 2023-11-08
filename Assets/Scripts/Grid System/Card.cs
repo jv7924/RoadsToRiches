@@ -10,6 +10,9 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private GridManager gridManager;
 
     [SerializeField]
+    private OfflineTurnSystem offlineTurnSystem;
+
+    [SerializeField]
     public Road road;
 
     [SerializeField]
@@ -33,6 +36,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         originalSize = transform.localScale;
         shrinkSize = originalSize * shrink;
         gridManager = FindObjectOfType<GridManager>();
+        offlineTurnSystem = FindObjectOfType<OfflineTurnSystem>();
     }
 
     void Update()
@@ -82,6 +86,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 tile.transform.Rotate(0, rotation, 0);
             }
             Destroy(eventData.pointerDrag);
+            offlineTurnSystem.ChangeTurn();
         }
         else
         {
