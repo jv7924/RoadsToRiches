@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3187423788605974509}
   - component: {fileID: 8012753558247525517}
   - component: {fileID: 2661368865711721949}
+  - component: {fileID: -5078433055886892982}
   m_Layer: 0
   m_Name: BendedTurn Tile
   m_TagString: Untagged
@@ -119,3 +120,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7288453631696309828}
   m_CullTransparentMesh: 1
+--- !u!114 &-5078433055886892982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7288453631696309828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4b911ece86a8846a6c54bcb68e0ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

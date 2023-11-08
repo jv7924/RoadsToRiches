@@ -10,10 +10,10 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private GridManager gridManager;
 
     [SerializeField]
-    private Road road;
+    public Road road;
 
     [SerializeField]
-    private GameObject tilePrefab;
+    public GameObject tilePrefab;
 
     private Transform parent;
 
@@ -78,7 +78,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             gridManager.addToList(hit.transform.name, road);
             if(hit.transform.gameObject.CompareTag("Board"))
             {
-                GameObject tile = Instantiate(tilePrefab, hit.transform.position, hit.transform.rotation);
+                GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
                 tile.transform.Rotate(0, rotation, 0);
             }
             Destroy(eventData.pointerDrag);

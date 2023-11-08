@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6468349098176418672}
   - component: {fileID: 2597642469673198275}
   - component: {fileID: 5396227538419079140}
+  - component: {fileID: 2685948736369440026}
   m_Layer: 0
   m_Name: RoadBlock Tile
   m_TagString: Untagged
@@ -119,3 +120,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7284531818685192310}
   m_CullTransparentMesh: 1
+--- !u!114 &2685948736369440026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7284531818685192310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4b911ece86a8846a6c54bcb68e0ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
