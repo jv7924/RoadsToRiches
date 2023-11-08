@@ -15,7 +15,6 @@ public class OfflineTurnSystem : MonoBehaviour
     private GameObject roadBlock, fourWay, tIntersection, bendedTurn, straight;
 
     private int turn;
-    //private GameObject hand;
 
     void Start()
     {
