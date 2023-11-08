@@ -31,6 +31,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public float shrink;
 
+    public PhotonView pv;
+
     void Awake()
     {
         rotation = 0;

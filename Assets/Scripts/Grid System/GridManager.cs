@@ -38,7 +38,7 @@ public class GridManager : MonoBehaviour
         {
             for(int y = 0; y < height; y++)
             {
-                var spawnedTile = PhotonNetwork.InstantiateRoomObject("Tile", new Vector3(x, 0, y), Quaternion.identity);
+                var spawnedTile = PhotonNetwork.Instantiate("Tile", new Vector3(x, 0, y), Quaternion.identity);
                 spawnedTile.name = $"Tile {x} {y}";
                 spawnedTile.tag = "Board";
             }
@@ -55,6 +55,7 @@ public class GridManager : MonoBehaviour
     public bool addToList(string name, Road road)
     {
         string[] coords = name.Split(' ');
+        Debug.LogError(name + ", " + road.ToString());
         int x = int.Parse(coords[1]);
         int y = int.Parse(coords[2]);
         if(tiles[x, y] != null)
