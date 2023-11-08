@@ -20,8 +20,15 @@ public class GridManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateGrid();
-        tiles = new Road[width, height];
+        if (PhotonNetwork.IsMasterClient)
+        {
+            GenerateGrid();
+            tiles = new Road[width, height];
+        }
+        else 
+        {
+            SetCamera();
+        }
     }
 
     // Update is called once per frame
@@ -31,11 +38,16 @@ public class GridManager : MonoBehaviour
         {
             for(int y = 0; y < height; y++)
             {
-                var spawnedTile = PhotonNetwork.Instantiate("Tile", new Vector3(x, 0, y), Quaternion.identity);
+                var spawnedTile = PhotonNetwork.InstantiateRoomObject("Tile", new Vector3(x, 0, y), Quaternion.identity);
                 spawnedTile.name = $"Tile {x} {y}";
                 spawnedTile.tag = "Board";
             }
         }
+        SetCamera();
+    }
+
+    private void SetCamera()
+    {
         cam.transform.position = new Vector3((float)width / 2 - .5f, camHeight, (float)height / 2 - .5f);
         cam.transform.Rotate(new Vector3(90, 0, 180));
     }

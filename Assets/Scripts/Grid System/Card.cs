@@ -85,10 +85,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 GameObject tile = PhotonNetwork.Instantiate(prefabName, hit.transform.position, hit.transform.rotation);
                 tile.transform.Rotate(0, rotation, 0);
             }
-            // if ()
-            {
-                PhotonNetwork.Destroy(eventData.pointerDrag);
-            }
+            Destroy(eventData.pointerDrag);
         }
         else
         {
