@@ -79,20 +79,20 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000))
         {
-            gridManager.addToList(hit.transform.name, road);
             if(hit.transform.gameObject.CompareTag("Board"))
             {
+                gridManager.addToList(hit.transform.name, road);
                 GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
                 tile.transform.Rotate(0, rotation, 0);
+                Destroy(eventData.pointerDrag);
+                offlineTurnSystem.ChangeTurn();
+            }            
+            else
+            {
+                transform.localScale = originalSize;
+                transform.SetParent(parent);
+                GetComponent<CanvasGroup>().blocksRaycasts = true;
             }
-            Destroy(eventData.pointerDrag);
-            offlineTurnSystem.ChangeTurn();
-        }
-        else
-        {
-            transform.localScale = originalSize;
-            transform.SetParent(parent);
-            GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
         parent.gameObject.SetActive(true);
         isDrag = false;

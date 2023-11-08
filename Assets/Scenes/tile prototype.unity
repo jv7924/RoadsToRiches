@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 1236366074}
   - component: {fileID: 1236366073}
   m_Layer: 5
-  m_Name: Player 1
+  m_Name: Player Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -886,7 +886,7 @@ GameObject:
   - component: {fileID: 1482029796}
   - component: {fileID: 1482029795}
   m_Layer: 5
-  m_Name: Player 2
+  m_Name: Player Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
