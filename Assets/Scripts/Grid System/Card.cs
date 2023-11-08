@@ -79,24 +79,14 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000))
         {
-            Debug.Log(hit.transform.name);
-            bool wasAddedToList = gridManager.addToList(hit.transform.name, road);  // Error occurs here if there is already a tile there
-            if (wasAddedToList == true)
+            gridManager.addToList(hit.transform.name, road);
+            if(hit.transform.gameObject.CompareTag("Board"))
             {
-                if (hit.transform.gameObject.CompareTag("Board"))
-                {
-                    GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
-                    tile.transform.Rotate(0, rotation, 0);
-                }
-                Destroy(eventData.pointerDrag);
-                offlineTurnSystem.ChangeTurn();
+                GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
+                tile.transform.Rotate(0, rotation, 0);
             }
-            else    // Should act as if the raycast never hit since the tile is already occupied
-            {
-                transform.localScale = originalSize;
-                transform.SetParent(parent);
-                GetComponent<CanvasGroup>().blocksRaycasts = true;
-            }
+            Destroy(eventData.pointerDrag);
+            offlineTurnSystem.ChangeTurn();
         }
         else
         {
