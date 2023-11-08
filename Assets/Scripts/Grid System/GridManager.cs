@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GridManager : MonoBehaviour
 {
@@ -63,17 +64,27 @@ public class GridManager : MonoBehaviour
 
     public bool addToList(string name, Road road)
     {
-        string[] coords = name.Split(' ');
-        int x = int.Parse(coords[1]);
-        int y = int.Parse(coords[2]);
-        if(tiles[x, y] != null)
+        try
         {
-            return false;
+            string[] coords = name.Split(' ');
+            int x = int.Parse(coords[1]);
+            int y = int.Parse(coords[2]);
+            if(tiles[x, y] != null)
+            {
+                return false;
+            }
+            else
+            {
+                tiles[x, y] = road; 
+                return true;
+            }
         }
-        else
+        catch (FormatException ex)
         {
-            tiles[x, y] = road; 
-            return true;
+            // Handles the error that arises when trying to place a road on an occupied tile
+            // Error occurs because the name is no longer "Tile X Y" and so "int.Parse()" can't find coords
+            Debug.Log("Error: " + ex.Message + "\nTile is already occupied by \"" + name + "\"");
+            return false;
         }
     }
 }
