@@ -86,14 +86,13 @@ public class GridManager : MonoBehaviour
         int[] leftCoords = new int[2];
         int x = int.Parse(coords[1]);
         int y = int.Parse(coords[2]);
-        for (int i = 0; i < 11; i++)
+        /*for (int i = 0; i < 11; i++)
         {
             for (int a = 0; a < 11; a++)
             {
-                //Debug.Log(i.ToString() + " " + a.ToString());
-                Debug.Log(tiles[i,a]);
+                //Debug.Log(tiles[i,a]);
             }
-        }
+        }*/
         if (tiles[x, y] == null)
         {
             //Get Coordinates of Surrounding Tiles
@@ -124,7 +123,7 @@ public class GridManager : MonoBehaviour
 
             if ((tiles[upCoords[0],upCoords[1]] == null) && (tiles[rightCoords[0],rightCoords[1]] == null) && (tiles[downCoords[0],downCoords[1]] == null) && (tiles[leftCoords[0],leftCoords[1]] == null))
             {
-                Debug.Log("Invalid");
+                //Debug.Log("Invalid");
                 return false;
             }
             //Debug.Log(name);
