@@ -84,15 +84,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             gridManager.addToList(hit.transform.name, road);
             if(hit.transform.gameObject.CompareTag("Board"))
             {
-<<<<<<< HEAD
-
-                gridManager.checkSurroundingCoords(hit.transform.name);
-                gridManager.addToList(hit.transform.name, road);
-                GameObject tile = PhotonNetwork.Instantiate(prefabName, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
-
-=======
                 GameObject tile = PhotonNetwork.Instantiate(prefabName, hit.transform.position, hit.transform.rotation);
->>>>>>> parent of 992340a (merge multi)
                 tile.transform.Rotate(0, rotation, 0);
             }
             Destroy(eventData.pointerDrag);
