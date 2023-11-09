@@ -87,13 +87,11 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             if(hit.transform.gameObject.CompareTag("Board"))
             {
-<<<<<<< HEAD
-                GameObject tile = PhotonNetwork.Instantiate(prefabName, hit.transform.position, hit.transform.rotation);
-=======
+
                 gridManager.checkSurroundingCoords(hit.transform.name);
                 gridManager.addToList(hit.transform.name, road);
-                GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
->>>>>>> 53bd4519da41590f3ea71b42a168d9002b63b524
+                GameObject tile = PhotonNetwork.Instantiate(prefabName, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
+
                 tile.transform.Rotate(0, rotation, 0);
                 Destroy(eventData.pointerDrag);
                 offlineTurnSystem.ChangeTurn();
