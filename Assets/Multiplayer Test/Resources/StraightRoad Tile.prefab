@@ -13,12 +13,8 @@ GameObject:
   - component: {fileID: 2264382003492522811}
   - component: {fileID: 7516362194859709723}
   - component: {fileID: 4162717791735843222}
-<<<<<<< HEAD:Assets/Multiplayer Test/Resources/StraightRoad Tile.prefab
   - component: {fileID: -7063149893563146944}
   - component: {fileID: -8969908590151513582}
-=======
-  - component: {fileID: -4431971761008723726}
->>>>>>> 53bd4519da41590f3ea71b42a168d9002b63b524:Assets/Prefabs/Tiles/StraightRoad Tile.prefab
   m_Layer: 0
   m_Name: StraightRoad Tile
   m_TagString: Untagged
@@ -125,11 +121,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499852059098917506}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD:Assets/Multiplayer Test/Resources/StraightRoad Tile.prefab
 --- !u!114 &-7063149893563146944
-=======
---- !u!114 &-4431971761008723726
->>>>>>> 53bd4519da41590f3ea71b42a168d9002b63b524:Assets/Prefabs/Tiles/StraightRoad Tile.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +130,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 499852059098917506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD:Assets/Multiplayer Test/Resources/StraightRoad Tile.prefab
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -169,8 +160,3 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
-=======
-  m_Script: {fileID: 11500000, guid: be4b911ece86a8846a6c54bcb68e0ad4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
->>>>>>> 53bd4519da41590f3ea71b42a168d9002b63b524:Assets/Prefabs/Tiles/StraightRoad Tile.prefab

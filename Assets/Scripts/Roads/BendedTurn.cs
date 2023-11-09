@@ -7,10 +7,10 @@ public class BendedTurn : Road
     // Start is called before the first frame update
     void Start()
     {
-        up    = new KeyValuePair<bool, Road>(true, null);
-        down  = new KeyValuePair<bool, Road>(false, null);
-        left  = new KeyValuePair<bool, Road>(true, null);
-        right = new KeyValuePair<bool, Road>(false, null);
+        up    = new KeyValuePair<bool, GameObject>(true, null);
+        down  = new KeyValuePair<bool, GameObject>(false, null);
+        left  = new KeyValuePair<bool, GameObject>(true, null);
+        right = new KeyValuePair<bool, GameObject>(false, null);
         rotation = 0;
     }
 
