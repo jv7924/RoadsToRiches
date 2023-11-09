@@ -95,6 +95,12 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 GetComponent<CanvasGroup>().blocksRaycasts = true;
             }
         }
+        else
+        {
+            transform.localScale = originalSize;
+            transform.SetParent(parent);
+            GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
         parent.gameObject.SetActive(true);
         isDrag = false;
     }
