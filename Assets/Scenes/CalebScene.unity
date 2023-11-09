@@ -892,8 +892,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 11
   height: 11
-  camHeight: 10
+  camHeight: 14
+  camOffset: 2
   tilePrefab: {fileID: 3812183387050043060, guid: 913a6f1759dead4419ed5099c993b371, type: 3}
+  casino1: {fileID: 5519241340438565020, guid: ae1db99ee3cf8264fb3a6e553bc75976, type: 3}
+  casino2: {fileID: 1016726621026319308, guid: 3fa8abd03e2ecdf4bbff7ae080e81541, type: 3}
+  airport: {fileID: 6747602867035133170, guid: ae1ab2768b6d60e4893a46223029a32b, type: 3}
   cam: {fileID: 1310566582}
 --- !u!4 &1688839291
 Transform:

@@ -79,6 +79,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000))
         {
+            gridManager.checkSurroundingCoords(hit.transform.name);
             if(hit.transform.gameObject.CompareTag("Board"))
             {
                 gridManager.addToList(hit.transform.name, road);

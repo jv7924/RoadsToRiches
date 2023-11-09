@@ -76,4 +76,63 @@ public class GridManager : MonoBehaviour
             return true;
         }
     }
+
+    public bool checkSurroundingCoords(string name)
+    {
+        string[] coords = name.Split(' ');
+        int[] upCoords = new int[2];
+        int[] rightCoords = new int[2];
+        int[] downCoords = new int[2];
+        int[] leftCoords = new int[2];
+        int x = int.Parse(coords[1]);
+        int y = int.Parse(coords[2]);
+        for (int i = 0; i < 11; i++)
+        {
+            for (int a = 0; a < 11; a++)
+            {
+                //Debug.Log(i.ToString() + " " + a.ToString());
+                Debug.Log(tiles[i,a]);
+            }
+        }
+        if (tiles[x, y] == null)
+        {
+            //Get Coordinates of Surrounding Tiles
+            if (y != 0) //Gets up coords
+            {
+                upCoords[0] = x;
+                upCoords[1] = y - 1;
+                //Debug.Log("up " + upCoords[0].ToString() + " " + upCoords[1].ToString());
+            }
+            if (x != 0) //Gets right coords
+            {
+                rightCoords[0] = x - 1;
+                rightCoords[1] = y;
+                //Debug.Log("right " + rightCoords[0].ToString() + " " + rightCoords[1].ToString());
+            }
+            if (y != 10) //Gets down coords
+            {
+                downCoords[0] = x;
+                downCoords[1] = y + 1;
+                //Debug.Log("down " + downCoords[0].ToString() + " " + downCoords[1].ToString());
+            }
+            if (x != 10) //Gets left coords
+            {
+                leftCoords[0] = x + 1;
+                leftCoords[1] = y;
+                //Debug.Log("left " + leftCoords[0].ToString() + " " + leftCoords[1].ToString());
+            }
+
+            if ((tiles[upCoords[0],upCoords[1]] == null) && (tiles[rightCoords[0],rightCoords[1]] == null) && (tiles[downCoords[0],downCoords[1]] == null) && (tiles[leftCoords[0],leftCoords[1]] == null))
+            {
+                Debug.Log("Invalid");
+                return false;
+            }
+            //Debug.Log(name);
+            return true;
+        } else 
+        {
+            Debug.Log("something here, invalid placement");
+            return false;
+        }
+    }
 }

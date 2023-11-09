@@ -94,7 +94,7 @@ public class Manager : MonoBehaviour
             newRoad = Instantiate(bendedTurn) as GameObject;
             newRoad.transform.SetParent(hand.transform);
             //Debug.Log("Turn");
-        } else if ((probabilityNumbers[3] <= number) && (number < probabilityNumbers[4])) //Staright
+        } else if ((probabilityNumbers[3] <= number) && (number < probabilityNumbers[4])) //Straight
         {
             newRoad = Instantiate(straight) as GameObject;
             newRoad.transform.SetParent(hand.transform);
