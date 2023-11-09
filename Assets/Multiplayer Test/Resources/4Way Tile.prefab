@@ -13,8 +13,12 @@ GameObject:
   - component: {fileID: 3012704803714825345}
   - component: {fileID: 1360457711109870164}
   - component: {fileID: 6449650793237467260}
+<<<<<<< HEAD:Assets/Multiplayer Test/Resources/4Way Tile.prefab
   - component: {fileID: -402886064506219261}
   - component: {fileID: -5053967635359648252}
+=======
+  - component: {fileID: 5132490711939270625}
+>>>>>>> 53bd4519da41590f3ea71b42a168d9002b63b524:Assets/Prefabs/Tiles/4Way Tile.prefab
   m_Layer: 0
   m_Name: 4Way Tile
   m_TagString: Untagged
@@ -121,7 +125,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8709500209693573224}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD:Assets/Multiplayer Test/Resources/4Way Tile.prefab
 --- !u!114 &-402886064506219261
+=======
+--- !u!114 &5132490711939270625
+>>>>>>> 53bd4519da41590f3ea71b42a168d9002b63b524:Assets/Prefabs/Tiles/4Way Tile.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,6 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8709500209693573224}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD:Assets/Multiplayer Test/Resources/4Way Tile.prefab
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -160,3 +169,8 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+=======
+  m_Script: {fileID: 11500000, guid: be4b911ece86a8846a6c54bcb68e0ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> 53bd4519da41590f3ea71b42a168d9002b63b524:Assets/Prefabs/Tiles/4Way Tile.prefab

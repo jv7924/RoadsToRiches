@@ -12,10 +12,13 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private GridManager gridManager;
 
     [SerializeField]
-    private Road road;
+    private OfflineTurnSystem offlineTurnSystem;
 
     [SerializeField]
-    private GameObject tilePrefab;
+    public Road road;
+
+    [SerializeField]
+    public GameObject tilePrefab;
 
     public string prefabName;
 
@@ -39,6 +42,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         originalSize = transform.localScale;
         shrinkSize = originalSize * shrink;
         gridManager = FindObjectOfType<GridManager>();
+        offlineTurnSystem = FindObjectOfType<OfflineTurnSystem>();
     }
 
     void Update()
@@ -81,13 +85,25 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000))
         {
-            gridManager.addToList(hit.transform.name, road);
             if(hit.transform.gameObject.CompareTag("Board"))
             {
+<<<<<<< HEAD
                 GameObject tile = PhotonNetwork.Instantiate(prefabName, hit.transform.position, hit.transform.rotation);
+=======
+                gridManager.checkSurroundingCoords(hit.transform.name);
+                gridManager.addToList(hit.transform.name, road);
+                GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
+>>>>>>> 53bd4519da41590f3ea71b42a168d9002b63b524
                 tile.transform.Rotate(0, rotation, 0);
+                Destroy(eventData.pointerDrag);
+                offlineTurnSystem.ChangeTurn();
+            }            
+            else
+            {
+                transform.localScale = originalSize;
+                transform.SetParent(parent);
+                GetComponent<CanvasGroup>().blocksRaycasts = true;
             }
-            Destroy(eventData.pointerDrag);
         }
         else
         {

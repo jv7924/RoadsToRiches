@@ -7,12 +7,12 @@ public class Road : MonoBehaviour
     // Stores a KVP for each of the four directions the tile connects.
     // The key stores a boolean where true means the direction has a valid connection point
     // and false means that direction cannot be connected to.
-    // The value stores a reference to the connected road's GameObject if there is a connection
+    // The value stores a reference to the connected road's Road Class Instance if there is a connection
     // otherwise the value will be null.
-    protected KeyValuePair<bool, GameObject> up;
-    protected KeyValuePair<bool, GameObject> down;
-    protected KeyValuePair<bool, GameObject> left;
-    protected KeyValuePair<bool, GameObject> right;
+    protected KeyValuePair<bool, Road> up;
+    protected KeyValuePair<bool, Road> down;
+    protected KeyValuePair<bool, Road> left;
+    protected KeyValuePair<bool, Road> right;
     // Stores the rotation of the road in degrees
     // Starts at 0 and increases by 90 in the counter-clockwise direction
     protected int rotation;
@@ -20,10 +20,10 @@ public class Road : MonoBehaviour
     // Rotates the roads directions by 90 degrees clockwise
     public void RotateClock()
     {
-        KeyValuePair<bool, GameObject> tempU = up;
-        KeyValuePair<bool, GameObject> tempD = down;
-        KeyValuePair<bool, GameObject> tempL = left;
-        KeyValuePair<bool, GameObject> tempR = right;
+        KeyValuePair<bool, Road> tempU = up;
+        KeyValuePair<bool, Road> tempD = down;
+        KeyValuePair<bool, Road> tempL = left;
+        KeyValuePair<bool, Road> tempR = right;
 
         up = tempL;
         down = tempR;
@@ -37,10 +37,10 @@ public class Road : MonoBehaviour
     // Rotates the roads directions by 90 degrees counter-clockwise
     public void RotateCounterClock()
     {
-        KeyValuePair<bool, GameObject> tempU = up;
-        KeyValuePair<bool, GameObject> tempD = down;
-        KeyValuePair<bool, GameObject> tempL = left;
-        KeyValuePair<bool, GameObject> tempR = right;
+        KeyValuePair<bool, Road> tempU = up;
+        KeyValuePair<bool, Road> tempD = down;
+        KeyValuePair<bool, Road> tempL = left;
+        KeyValuePair<bool, Road> tempR = right;
 
         up = tempR;
         down = tempL;
@@ -83,13 +83,13 @@ public class Road : MonoBehaviour
 
     // Takes in the direction of THIS road that a road is being connected to and a reference to the road that's being connected.
     // Returns true if the connection was made successfully, returns false if there was an issue
-    public bool ConnectRoad(string direction, GameObject road)
+    public bool ConnectRoad(string direction, Road road)
     {
         if (direction == "up")
         {
             if (CheckIfPossibleConnection(direction) == true)
             {
-                up = new KeyValuePair<bool, GameObject>(true, road);
+                up = new KeyValuePair<bool, Road>(true, road);
                 return true;
             }
             else { return false; }
@@ -98,7 +98,7 @@ public class Road : MonoBehaviour
         {
             if (CheckIfPossibleConnection(direction) == true)
             {
-                down = new KeyValuePair<bool, GameObject>(true, road);
+                down = new KeyValuePair<bool, Road>(true, road);
                 return true;
             }
             else { return false; }
@@ -107,7 +107,7 @@ public class Road : MonoBehaviour
         {
             if (CheckIfPossibleConnection(direction) == true)
             {
-                left = new KeyValuePair<bool, GameObject>(true, road);
+                left = new KeyValuePair<bool, Road>(true, road);
                 return true;
             }
             else { return false; }
@@ -116,7 +116,7 @@ public class Road : MonoBehaviour
         {
             if (CheckIfPossibleConnection(direction) == true)
             {
-                right = new KeyValuePair<bool, GameObject>(true, road);
+                right = new KeyValuePair<bool, Road>(true, road);
                 return true;
             }
             else { return false; }

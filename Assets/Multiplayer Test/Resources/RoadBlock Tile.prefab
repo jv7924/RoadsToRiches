@@ -13,8 +13,12 @@ GameObject:
   - component: {fileID: 6468349098176418672}
   - component: {fileID: 2597642469673198275}
   - component: {fileID: 5396227538419079140}
+<<<<<<< HEAD:Assets/Multiplayer Test/Resources/RoadBlock Tile.prefab
   - component: {fileID: -9162799266202086107}
   - component: {fileID: -197794555913152715}
+=======
+  - component: {fileID: 2685948736369440026}
+>>>>>>> 53bd4519da41590f3ea71b42a168d9002b63b524:Assets/Prefabs/Tiles/RoadBlock Tile.prefab
   m_Layer: 0
   m_Name: RoadBlock Tile
   m_TagString: Untagged
@@ -121,7 +125,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7284531818685192310}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD:Assets/Multiplayer Test/Resources/RoadBlock Tile.prefab
 --- !u!114 &-9162799266202086107
+=======
+--- !u!114 &2685948736369440026
+>>>>>>> 53bd4519da41590f3ea71b42a168d9002b63b524:Assets/Prefabs/Tiles/RoadBlock Tile.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,6 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7284531818685192310}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD:Assets/Multiplayer Test/Resources/RoadBlock Tile.prefab
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -160,3 +169,8 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+=======
+  m_Script: {fileID: 11500000, guid: be4b911ece86a8846a6c54bcb68e0ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> 53bd4519da41590f3ea71b42a168d9002b63b524:Assets/Prefabs/Tiles/RoadBlock Tile.prefab

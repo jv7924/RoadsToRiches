@@ -15,7 +15,11 @@ GameObject:
   - component: {fileID: -4230465348573877929}
   - component: {fileID: 3812183387050043060}
   - component: {fileID: 6226268412316678099}
+<<<<<<< HEAD:Assets/Multiplayer Test/Resources/Tile.prefab
   - component: {fileID: 1736726243381740646}
+=======
+  - component: {fileID: 6453191239591059551}
+>>>>>>> 53bd4519da41590f3ea71b42a168d9002b63b524:Assets/Prefabs/Tile.prefab
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -70,7 +74,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -147,6 +151,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4b911ece86a8846a6c54bcb68e0ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD:Assets/Multiplayer Test/Resources/Tile.prefab
+=======
+  baseColor: {fileID: 2100000, guid: 2aa6373a876a7f048b2cfcb06ad7c879, type: 2}
+  offsetColor: {fileID: 2100000, guid: 651a9bc4c05fdd04c9d9abc4dd832171, type: 2}
+  renderer: {fileID: 3342494103861500236}
+>>>>>>> 53bd4519da41590f3ea71b42a168d9002b63b524:Assets/Prefabs/Tile.prefab
 --- !u!222 &6226268412316678099
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -155,7 +165,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601881566641572230}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD:Assets/Multiplayer Test/Resources/Tile.prefab
 --- !u!114 &1736726243381740646
+=======
+--- !u!114 &6453191239591059551
+>>>>>>> 53bd4519da41590f3ea71b42a168d9002b63b524:Assets/Prefabs/Tile.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,6 +178,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 601881566641572230}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD:Assets/Multiplayer Test/Resources/Tile.prefab
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -177,3 +192,26 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+=======
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+>>>>>>> 53bd4519da41590f3ea71b42a168d9002b63b524:Assets/Prefabs/Tile.prefab

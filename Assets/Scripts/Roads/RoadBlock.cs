@@ -7,10 +7,10 @@ public class RoadBlock : Road
     // Start is called before the first frame update
     void Start()
     {
-        up    = new KeyValuePair<bool, GameObject>(false, null);
-        down  = new KeyValuePair<bool, GameObject>(true, null);
-        left  = new KeyValuePair<bool, GameObject>(false, null);
-        right = new KeyValuePair<bool, GameObject>(false, null);
+        up    = new KeyValuePair<bool, Road>(false, null);
+        down  = new KeyValuePair<bool, Road>(true, null);
+        left  = new KeyValuePair<bool, Road>(false, null);
+        right = new KeyValuePair<bool, Road>(false, null);
         rotation = 0;
     }
 
