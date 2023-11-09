@@ -79,9 +79,9 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000))
         {
-            gridManager.checkSurroundingCoords(hit.transform.name);
             if(hit.transform.gameObject.CompareTag("Board"))
             {
+                gridManager.checkSurroundingCoords(hit.transform.name);
                 gridManager.addToList(hit.transform.name, road);
                 GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
                 tile.transform.Rotate(0, rotation, 0);
