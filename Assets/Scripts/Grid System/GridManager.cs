@@ -20,15 +20,8 @@ public class GridManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // if (PhotonNetwork.IsMasterClient)
-        // {
-            GenerateGrid();
-            tiles = new Road[width, height];
-        // }
-        // else 
-        // {
-        //     SetCamera();
-        // }
+        GenerateGrid();
+        tiles = new Road[width, height];
     }
 
     // Update is called once per frame
