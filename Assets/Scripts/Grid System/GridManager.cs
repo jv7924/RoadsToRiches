@@ -56,7 +56,11 @@ public class GridManager : MonoBehaviour
                 }
             }
         }
+        PositionCamera();
+    }
 
+    private void PositionCamera()
+    {
         cam.transform.position = new Vector3((float)width / 2 - .5f, camHeight, (float)height / 2 - .5f + camOffset);
         cam.transform.Rotate(new Vector3(90, 0, 180));
     }

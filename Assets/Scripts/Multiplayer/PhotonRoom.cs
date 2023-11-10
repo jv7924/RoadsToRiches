@@ -95,7 +95,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
         if (currentScene == multiplayerScene)
         {
-            Invoke("CreatePlayer", 2f);
+            // Invoke("CreatePlayer", 2f);
         }
     }
 
