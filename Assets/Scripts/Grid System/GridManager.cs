@@ -58,18 +58,21 @@ public class GridManager : MonoBehaviour
                     var card = Instantiate(casino1);
                     Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
                     addToList("Tile " + x + " " + y, casino1.GetComponent<Card>().road);
+                    Destroy(card);
                 }
                 else if(x == width - 2 && y == height - 2)
                 {
                     var card = Instantiate(casino2);
                     Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
                     addToList("Tile " + x + " " + y, casino2.GetComponent<Card>().road);
+                    Destroy(card);
                 }
                 else if(x == width / 2 && y == height / 2)
                 {
                     var card = Instantiate(airport);
                     Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
                     addToList("Tile " + x + " " + y, airport.GetComponent<Card>().road);
+                    Destroy(card);
                 }
             }
         }
