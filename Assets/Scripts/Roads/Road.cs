@@ -9,10 +9,10 @@ public class Road : MonoBehaviour
     // and false means that direction cannot be connected to.
     // The value stores a reference to the connected road's Road Class Instance if there is a connection
     // otherwise the value will be null.
-    protected KeyValuePair<bool, Road> up;
-    protected KeyValuePair<bool, Road> down;
-    protected KeyValuePair<bool, Road> left;
-    protected KeyValuePair<bool, Road> right;
+    public KeyValuePair<bool, Road> up;
+    public KeyValuePair<bool, Road> down;
+    public KeyValuePair<bool, Road> left;
+    public KeyValuePair<bool, Road> right;
     // Stores the rotation of the road in degrees
     // Starts at 0 and increases by 90 in the counter-clockwise direction
     protected int rotation;

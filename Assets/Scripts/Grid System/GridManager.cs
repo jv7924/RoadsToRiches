@@ -35,13 +35,7 @@ public class GridManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            for (int i = 0; i < tiles.GetLength(0); i++)
-            {
-                for (int j = 0; j < tiles.GetLength(1); j++)
-                {
-                    Debug.Log("(" + i + "," + j + ") = " + tiles[i, j]);
-                }
-            }
+            PrintBoard();
         }
     }
 
@@ -61,22 +55,36 @@ public class GridManager : MonoBehaviour
 
                 if(x == 1 && y == 1)
                 {
-                    Instantiate(casino1.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
+                    var card = Instantiate(casino1);
+                    Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
                     addToList("Tile " + x + " " + y, casino1.GetComponent<Card>().road);
                 }
                 else if(x == width - 2 && y == height - 2)
                 {
-                    Instantiate(casino2.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
+                    var card = Instantiate(casino2);
+                    Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
                     addToList("Tile " + x + " " + y, casino2.GetComponent<Card>().road);
                 }
                 else if(x == width / 2 && y == height / 2)
                 {
-                    Instantiate(airport.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
+                    var card = Instantiate(airport);
+                    Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
                     addToList("Tile " + x + " " + y, airport.GetComponent<Card>().road);
                 }
             }
         }
         PositionCamera();
+    }
+
+    public void PrintBoard()
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                Debug.Log("(" + x + "," + y + ") = " + tiles[x, y]);// + tiles[x,y].up);
+            }
+        }
     }
 
     public void PlayDrawSound()
@@ -106,7 +114,8 @@ public class GridManager : MonoBehaviour
         }
         else
         {
-            tiles[x, y] = road; 
+            tiles[x, y] = road;
+            Debug.Log("tiles: " + tiles[x,y]);
             return true;
         }
     }
