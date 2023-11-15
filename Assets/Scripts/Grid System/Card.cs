@@ -81,12 +81,16 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             if(hit.transform.gameObject.CompareTag("Board"))
             {
-                gridManager.checkSurroundingCoords(hit.transform.name);
-                gridManager.addToList(hit.transform.name, road);
-                GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
-                tile.transform.Rotate(0, rotation, 0);
-                Destroy(eventData.pointerDrag);
-                offlineTurnSystem.ChangeTurn();
+                //if(gridManager.checkSurroundingCoords(hit.transform.name))
+                //{
+                    gridManager.PlayBuildSound();
+                    gridManager.addToList(hit.transform.name, road);
+                    GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
+                    tile.transform.Rotate(0, rotation, 0);
+                    Destroy(eventData.pointerDrag);
+                    offlineTurnSystem.ChangeTurn();
+                    gridManager.PlayDrawSound();
+                //}
             }            
             else
             {

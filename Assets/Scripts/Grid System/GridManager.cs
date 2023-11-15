@@ -16,6 +16,12 @@ public class GridManager : MonoBehaviour
     [SerializeField]
     private Transform cam;
 
+    [SerializeField]
+    private AudioSource audio;
+
+    [SerializeField]
+    private AudioClip drawSound, buildSound;
+
     private Road[,] tiles;
 
     // Start is called before the first frame update
@@ -57,6 +63,16 @@ public class GridManager : MonoBehaviour
             }
         }
         PositionCamera();
+    }
+
+    public void PlayDrawSound()
+    {
+        audio.PlayOneShot(drawSound);
+    }
+
+    public void PlayBuildSound()
+    {
+        audio.PlayOneShot(buildSound);
     }
 
     private void PositionCamera()
