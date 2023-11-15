@@ -56,22 +56,22 @@ public class Road : MonoBehaviour
     {
         if (direction == "up")
         {
-            if (up.Key == true || up.Value == null) { return true; }
+            if (up.Key == true && up.Value == null) { return true; }
             else { return false; }
         }
         else if (direction == "down")
         {
-            if (down.Key == true || down.Value == null) { return true; }
+            if (down.Key == true && down.Value == null) { return true; }
             else { return false; }
         }
         else if (direction == "left")
         {
-            if (left.Key == true || left.Value == null) { return true; }
+            if (left.Key == true && left.Value == null) { return true; }
             else { return false; }
         }
         else if (direction == "right")
         {
-            if (right.Key == true || right.Value == null) { return true; }
+            if (right.Key == true && right.Value == null) { return true; }
             else { return false; }
         }
         else 
