@@ -31,6 +31,20 @@ public class GridManager : MonoBehaviour
         GenerateGrid();
     }
 
+    void Update()   // Purely for debugging. Press enter to print out the whole array
+    {
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            for (int i = 0; i < tiles.GetLength(0); i++)
+            {
+                for (int j = 0; j < tiles.GetLength(1); j++)
+                {
+                    Debug.Log("(" + i + "," + j + ") = " + tiles[i, j]);
+                }
+            }
+        }
+    }
+
     // Update is called once per frame
     void GenerateGrid()
     {
