@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11b3d84f21e18443bfe228d1d1883de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 6506442369873629520, guid: 8d3a80c05222eb748b41e0677daa8203, type: 3}
+  playerPrefab: {fileID: 7214116837409687451, guid: a9e05ce4247ae6446afeb294389946a6, type: 3}
   multiplayerScene: 1
   currentScene: 0
 --- !u!4 &389679016
