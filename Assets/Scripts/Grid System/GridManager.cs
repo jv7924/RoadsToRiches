@@ -46,7 +46,7 @@ public class GridManager : MonoBehaviour
         {
             for(int y = 0; y < height; y++)
             {
-                var spawnedTile = Instantiate(tilePrefab, new Vector3(x, 0, y), Quaternion.identity);
+                var spawnedTile = Instantiate(tilePrefab, new Vector3(-x, 0, -y), Quaternion.identity);
                 spawnedTile.name = $"Tile {x} {y}";
                 spawnedTile.tag = "Board";
 
@@ -58,21 +58,24 @@ public class GridManager : MonoBehaviour
                     var card = Instantiate(casino1);
                     Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
                     addToList("Tile " + x + " " + y, casino1.GetComponent<Card>().road);
-                    Destroy(card);
+                    card.transform.parent = card.GetComponent<Card>().discardPile.transform;
+                    //Destroy(card);
                 }
                 else if(x == width - 2 && y == height - 2)
                 {
                     var card = Instantiate(casino2);
                     Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
                     addToList("Tile " + x + " " + y, casino2.GetComponent<Card>().road);
-                    Destroy(card);
+                    card.transform.parent = card.GetComponent<Card>().discardPile.transform;
+                    //Destroy(card);
                 }
                 else if(x == width / 2 && y == height / 2)
                 {
                     var card = Instantiate(airport);
                     Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
                     addToList("Tile " + x + " " + y, airport.GetComponent<Card>().road);
-                    Destroy(card);
+                    card.transform.parent = card.GetComponent<Card>().discardPile.transform;
+                    //Destroy(card);
                 }
             }
         }
@@ -102,7 +105,7 @@ public class GridManager : MonoBehaviour
 
     private void PositionCamera()
     {
-        cam.transform.position = new Vector3((float)width / 2 - .5f, camHeight, (float)height / 2 - .5f + camOffset);
+        cam.transform.position = new Vector3(-(float)width / 2 - .5f, camHeight, -(float)height / 2 - .5f + camOffset);
         cam.transform.Rotate(new Vector3(90, 0, 180));
     }
 

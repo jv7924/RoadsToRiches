@@ -13,6 +13,9 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private OfflineTurnSystem offlineTurnSystem;
 
     [SerializeField]
+    public GameObject discardPile;
+
+    [SerializeField]
     public Road road;
 
     [SerializeField]
@@ -37,6 +40,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         shrinkSize = originalSize * shrink;
         gridManager = FindObjectOfType<GridManager>();
         offlineTurnSystem = FindObjectOfType<OfflineTurnSystem>();
+        discardPile = GameObject.FindWithTag("Discard Pile");
     }
 
     void Update()
@@ -87,7 +91,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     gridManager.addToList(hit.transform.name, road);
                     GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
                     tile.transform.Rotate(0, rotation, 0);
-                    Destroy(eventData.pointerDrag);
+                    //Destroy(eventData.pointerDrag);
+                    eventData.pointerDrag.transform.parent = discardPile.transform;
                     offlineTurnSystem.ChangeTurn();
                     gridManager.PlayDrawSound();
                 //}
