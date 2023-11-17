@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Road : MonoBehaviour
 {
@@ -16,6 +17,13 @@ public class Road : MonoBehaviour
     // Stores the rotation of the road in degrees
     // Starts at 0 and increases by 90 in the counter-clockwise direction
     protected int rotation;
+    protected Guid uniqueID;
+
+    // Retrieves the unique ID for the class instance
+    public Guid GetGuid()
+    {
+        return uniqueID;
+    }
 
     // Rotates the roads directions by 90 degrees clockwise
     public void RotateClock()

@@ -112,5 +112,12 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
         parent.gameObject.SetActive(true);
         isDrag = false;
+
+        // Temporary debug for checking if the game is won
+        int returnValue = gridManager.CheckIfWon();
+        if (returnValue != 0)
+        {
+            Debug.Log($"Player {returnValue} has won!");
+        }
     }
 }

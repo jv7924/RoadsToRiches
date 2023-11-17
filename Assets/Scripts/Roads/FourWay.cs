@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class FourWay : Road
 {
@@ -12,6 +13,7 @@ public class FourWay : Road
         left  = new KeyValuePair<bool, Road>(true, null);
         right = new KeyValuePair<bool, Road>(true, null);
         rotation = 0;
+        uniqueID = Guid.NewGuid();
     }
 
 }
