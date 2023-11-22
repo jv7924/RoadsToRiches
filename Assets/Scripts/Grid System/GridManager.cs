@@ -43,6 +43,20 @@ public class GridManager : MonoBehaviour
     {
         tiles = new Road[width, height];
         GenerateGrid();
+
+        //TEMPORARY FIX FOR AIRPORT AND CASINOS
+        tiles[1,1].up = new KeyValuePair<bool, Road>(true, null);
+        tiles[1,1].right = new KeyValuePair<bool, Road>(true, null);
+        tiles[1,1].down = new KeyValuePair<bool, Road>(true, null);
+        tiles[1,1].left = new KeyValuePair<bool, Road>(true, null);
+        tiles[5,5].up = new KeyValuePair<bool, Road>(true, null);
+        tiles[5,5].right = new KeyValuePair<bool, Road>(true, null);
+        tiles[5,5].down = new KeyValuePair<bool, Road>(true, null);
+        tiles[5,5].left = new KeyValuePair<bool, Road>(true, null);
+        tiles[9,9].up = new KeyValuePair<bool, Road>(true, null);
+        tiles[9,9].right = new KeyValuePair<bool, Road>(true, null);
+        tiles[9,9].down = new KeyValuePair<bool, Road>(true, null);
+        tiles[9,9].left = new KeyValuePair<bool, Road>(true, null);
     }
 
     void Update()   // Purely for debugging. Press enter to print out the whole array
@@ -148,7 +162,7 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    public bool checkSurroundingCoords(string name)
+    public bool checkSurroundingCoords(string name, Road road)
     {
         string[] coords = name.Split(' ');
         int[] upCoords = new int[2];
@@ -157,53 +171,160 @@ public class GridManager : MonoBehaviour
         int[] leftCoords = new int[2];
         int x = int.Parse(coords[1]);
         int y = int.Parse(coords[2]);
-        /*for (int i = 0; i < 11; i++)
-        {
-            for (int a = 0; a < 11; a++)
-            {
-                //Debug.Log(tiles[i,a]);
-            }
-        }*/
         if (tiles[x, y] == null)
         {
             //Get Coordinates of Surrounding Tiles
-            if (y != 0) //Gets up coords
+            if (y != 10) //Gets up coords
             {
                 upCoords[0] = x;
-                upCoords[1] = y - 1;
-                //Debug.Log("up " + upCoords[0].ToString() + " " + upCoords[1].ToString());
+                upCoords[1] = y + 1;
             }
-            if (x != 0) //Gets right coords
+            if (x != 10) //Gets right coords
             {
-                rightCoords[0] = x - 1;
+                rightCoords[0] = x + 1;
                 rightCoords[1] = y;
-                //Debug.Log("right " + rightCoords[0].ToString() + " " + rightCoords[1].ToString());
             }
-            if (y != 10) //Gets down coords
+            if (y != 0) //Gets down coords
             {
                 downCoords[0] = x;
-                downCoords[1] = y + 1;
-                //Debug.Log("down " + downCoords[0].ToString() + " " + downCoords[1].ToString());
+                downCoords[1] = y - 1;
             }
-            if (x != 10) //Gets left coords
+            if (x != 0) //Gets left coords
             {
-                leftCoords[0] = x + 1;
+                leftCoords[0] = x - 1;
                 leftCoords[1] = y;
-                //Debug.Log("left " + leftCoords[0].ToString() + " " + leftCoords[1].ToString());
             }
 
+            //Check if all tiles are null
             if ((tiles[upCoords[0],upCoords[1]] == null) && (tiles[rightCoords[0],rightCoords[1]] == null) && (tiles[downCoords[0],downCoords[1]] == null) && (tiles[leftCoords[0],leftCoords[1]] == null))
             {
-                //Debug.Log("Invalid");
+                Debug.Log("invalid placement: no surrounding tiles");
                 return false;
             }
-            //Debug.Log(name);
-            return true;
+
+            bool oneConnection = false;
+            bool canUp = false;
+            bool canRight = false;
+            bool canDown = false;
+            bool canLeft = false;
+
+            //Check directions
+            if (tiles[upCoords[0],upCoords[1]] != null) //Check up
+            {
+                Road tempRoad = tiles[upCoords[0],upCoords[1]];
+                if ((road.CheckIfPossibleConnection("up") == true) && (tempRoad.CheckIfPossibleConnection("down") == true))
+                {
+                    canUp = true;
+                    oneConnection = true;
+                } else if ((road.CheckIfPossibleConnection("up") == false) && (tempRoad.CheckIfPossibleConnection("down") == false))
+                {
+                    canUp = true;
+                } else 
+                {
+                    canUp = false;
+                }
+            } else 
+            {
+                canUp = true;
+            }
+
+            if (tiles[rightCoords[0],rightCoords[1]] != null) //Check right
+            {
+                Road tempRoad = tiles[rightCoords[0],rightCoords[1]];
+                if ((road.CheckIfPossibleConnection("right") == true) && (tempRoad.CheckIfPossibleConnection("left") == true))
+                {
+                    oneConnection = true;
+                    canRight = true;
+                } else if ((road.CheckIfPossibleConnection("right") == false) && (tempRoad.CheckIfPossibleConnection("left") == false))
+                {
+                    canRight = true;
+                } else 
+                {
+                    canRight = false;
+                }
+            }
+             else 
+            {
+                canRight = true;
+            }
+
+            if (tiles[downCoords[0],downCoords[1]] != null) //Check down
+            {
+                Road tempRoad = tiles[downCoords[0],downCoords[1]];
+                if ((road.CheckIfPossibleConnection("down") == true) && (tempRoad.CheckIfPossibleConnection("up") == true))
+                {
+                    oneConnection = true;
+                    canDown = true;
+                } else if ((road.CheckIfPossibleConnection("down") == false) && (tempRoad.CheckIfPossibleConnection("up") == false))
+                {
+                    canDown = true;
+                } else 
+                {
+                    canDown = false;
+                }
+            }
+             else 
+            {
+                canDown = true;
+            }
+
+            if (tiles[leftCoords[0],leftCoords[1]] != null) //Check left
+            {
+                Road tempRoad = tiles[leftCoords[0],leftCoords[1]];
+                if ((road.CheckIfPossibleConnection("left") == true) && (tempRoad.CheckIfPossibleConnection("right") == true))
+                {
+                    oneConnection = true;
+                    canLeft = true;
+                } else if ((road.CheckIfPossibleConnection("left") == false) && (tempRoad.CheckIfPossibleConnection("right") == false))
+                {
+                    canLeft = true;
+                } else 
+                {
+                    canLeft = false;
+                }
+            } else 
+            {
+                canLeft = true;
+            }
+
+            /*Road tempRoad2 = tiles[x,y];
+            Debug.Log("up " + tempRoad2.CheckIfPossibleConnection("up").ToString());
+            Debug.Log("right " + tempRoad2.CheckIfPossibleConnection("right").ToString());
+            Debug.Log("down " + tempRoad2.CheckIfPossibleConnection("down").ToString());
+            Debug.Log("left " + tempRoad2.CheckIfPossibleConnection("left").ToString());*/
+
+                //DEBUG STATEMENTS
+                //Debug.Log("up " + tempRoad.CheckIfPossibleConnection("up").ToString());
+                //Debug.Log("right " + tempRoad.CheckIfPossibleConnection("right").ToString());
+                //Debug.Log("down " + tempRoad.CheckIfPossibleConnection("down").ToString());
+                //Debug.Log("left " + tempRoad.CheckIfPossibleConnection("left").ToString());
+                //Debug.Log("up " + canUp.ToString());
+                //Debug.Log("right " + canRight.ToString());
+                //Debug.Log("down " + canDown.ToString());
+                //Debug.Log("left " + canLeft.ToString());
+            
+            if (canUp && canRight && canDown && canLeft && oneConnection) //Check all directions
+            {
+                Debug.Log("valid placement");
+                return true;
+            } else
+            {
+                Debug.Log("invalid placement: not all roads are connectable");
+                return false;
+            }
         } else 
         {
             Debug.Log("something here, invalid placement");
             return false;
         }
+    }
+
+    public void checkRoad(Road road)
+    {
+        Debug.Log("up " + road.CheckIfPossibleConnection("up").ToString());
+        Debug.Log("right " + road.CheckIfPossibleConnection("right").ToString());
+        Debug.Log("down " + road.CheckIfPossibleConnection("down").ToString());
+        Debug.Log("left " + road.CheckIfPossibleConnection("left").ToString());
     }
 
     // Takes in Coordinates and returns a list of Coordinates for all neighboring tiles that have a Road

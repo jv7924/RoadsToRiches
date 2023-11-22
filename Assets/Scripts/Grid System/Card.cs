@@ -85,8 +85,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             if(hit.transform.gameObject.CompareTag("Board"))
             {
-                //if(gridManager.checkSurroundingCoords(hit.transform.name))
-                //{
+                if(gridManager.checkSurroundingCoords(hit.transform.name, road))
+                {
                     gridManager.PlayBuildSound();
                     gridManager.addToList(hit.transform.name, road);
                     GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
@@ -95,7 +95,23 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     eventData.pointerDrag.transform.parent = discardPile.transform;
                     offlineTurnSystem.ChangeTurn();
                     gridManager.PlayDrawSound();
-                //}
+                } else 
+                {
+                    transform.localScale = originalSize;
+                    transform.SetParent(parent);
+                    GetComponent<CanvasGroup>().blocksRaycasts = true;
+                }
+
+                /*gridManager.checkSurroundingCoords(hit.transform.name, road);
+                gridManager.PlayBuildSound();
+                gridManager.addToList(hit.transform.name, road);
+                //gridManager.checkRoad(road);
+                GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
+                tile.transform.Rotate(0, rotation, 0);
+                //Destroy(eventData.pointerDrag);
+                eventData.pointerDrag.transform.parent = discardPile.transform;
+                offlineTurnSystem.ChangeTurn();
+                gridManager.PlayDrawSound();*/
             }            
             else
             {
