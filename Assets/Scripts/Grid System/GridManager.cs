@@ -43,20 +43,6 @@ public class GridManager : MonoBehaviour
     {
         tiles = new Road[width, height];
         GenerateGrid();
-
-        //TEMPORARY FIX FOR AIRPORT AND CASINOS
-        tiles[1,1].up = new KeyValuePair<bool, Road>(true, null);
-        tiles[1,1].right = new KeyValuePair<bool, Road>(true, null);
-        tiles[1,1].down = new KeyValuePair<bool, Road>(true, null);
-        tiles[1,1].left = new KeyValuePair<bool, Road>(true, null);
-        tiles[5,5].up = new KeyValuePair<bool, Road>(true, null);
-        tiles[5,5].right = new KeyValuePair<bool, Road>(true, null);
-        tiles[5,5].down = new KeyValuePair<bool, Road>(true, null);
-        tiles[5,5].left = new KeyValuePair<bool, Road>(true, null);
-        tiles[9,9].up = new KeyValuePair<bool, Road>(true, null);
-        tiles[9,9].right = new KeyValuePair<bool, Road>(true, null);
-        tiles[9,9].down = new KeyValuePair<bool, Road>(true, null);
-        tiles[9,9].left = new KeyValuePair<bool, Road>(true, null);
     }
 
     void Update()   // Purely for debugging. Press enter to print out the whole array
@@ -93,25 +79,22 @@ public class GridManager : MonoBehaviour
                 {
                     var card = Instantiate(casino1);
                     Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
-                    addToList("Tile " + x + " " + y, casino1.GetComponent<Card>().road);
-                    card.transform.parent = card.GetComponent<Card>().discardPile.transform;
-                    //Destroy(card);
+                    addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
+                    card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
                 }
                 else if(x == width - 2 && y == height - 2)
                 {
                     var card = Instantiate(casino2);
                     Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
-                    addToList("Tile " + x + " " + y, casino2.GetComponent<Card>().road);
-                    card.transform.parent = card.GetComponent<Card>().discardPile.transform;
-                    //Destroy(card);
+                    addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
+                    card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
                 }
                 else if(x == width / 2 && y == height / 2)
                 {
                     var card = Instantiate(airport);
                     Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
-                    addToList("Tile " + x + " " + y, airport.GetComponent<Card>().road);
-                    card.transform.parent = card.GetComponent<Card>().discardPile.transform;
-                    //Destroy(card);
+                    addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
+                    card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
                 }
             }
         }
@@ -124,7 +107,10 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                Debug.Log("(" + x + "," + y + ") = " + tiles[x, y]);// + tiles[x,y].up);
+                if(tiles[x, y] != null)
+                {
+                    Debug.Log("(" + x + "," + y + ") = " + tiles[x, y] + tiles[x,y].up);
+                }
             }
         }
     }
@@ -141,7 +127,7 @@ public class GridManager : MonoBehaviour
 
     private void PositionCamera()
     {
-        cam.transform.position = new Vector3(-(float)width / 2 - .5f, camHeight, -(float)height / 2 - .5f + camOffset);
+        cam.transform.position = new Vector3(-(float)width / 2 + .5f, camHeight, -(float)height / 2 - .5f + camOffset);
         cam.transform.Rotate(new Vector3(90, 0, 180));
     }
 

@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 429647611}
   - component: {fileID: 429647610}
   - component: {fileID: 429647609}
+  - component: {fileID: 429647613}
   m_Layer: 5
   m_Name: Player 2 Canvas
   m_TagString: Player2
@@ -275,7 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 0.5
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -328,6 +329,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &429647613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429647608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f4e3864c9ba794495a1bb39ef92b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shrink: 0
+  ui: {fileID: 429647610}
 --- !u!1 &720915626
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 11
   height: 11
-  camHeight: 14
+  camHeight: 12
   camOffset: 2
   tilePrefab: {fileID: 3812183387050043060, guid: 913a6f1759dead4419ed5099c993b371, type: 3}
   casino1: {fileID: 5519241340438565020, guid: ae1db99ee3cf8264fb3a6e553bc75976, type: 3}
@@ -917,6 +932,7 @@ GameObject:
   - component: {fileID: 1298702216}
   - component: {fileID: 1298702215}
   - component: {fileID: 1298702214}
+  - component: {fileID: 1298702218}
   m_Layer: 5
   m_Name: Player 1 Canvas
   m_TagString: Player1
@@ -955,7 +971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 0.5
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -1008,6 +1024,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1298702218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298702213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f4e3864c9ba794495a1bb39ef92b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shrink: 0
+  ui: {fileID: 1298702215}
 --- !u!1 &1352650410
 GameObject:
   m_ObjectHideFlags: 0

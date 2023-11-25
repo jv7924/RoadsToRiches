@@ -36,7 +36,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     void Awake()
     {
         rotation = 0;
-        originalSize = transform.localScale;
+        originalSize = transform.localScale * 2;
         shrinkSize = originalSize * shrink;
         gridManager = FindObjectOfType<GridManager>();
         offlineTurnSystem = FindObjectOfType<OfflineTurnSystem>();
@@ -91,14 +91,14 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     gridManager.addToList(hit.transform.name, road);
                     GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
                     tile.transform.Rotate(0, rotation, 0);
-                    //Destroy(eventData.pointerDrag);
-                    eventData.pointerDrag.transform.parent = discardPile.transform;
+                    eventData.pointerDrag.transform.SetParent(discardPile.transform);
                     offlineTurnSystem.ChangeTurn();
                     gridManager.PlayDrawSound();
-                } else 
+                }
+                else 
                 {
-                    transform.localScale = originalSize;
                     transform.SetParent(parent);
+                    transform.localScale = originalSize;
                     GetComponent<CanvasGroup>().blocksRaycasts = true;
                 }
 
