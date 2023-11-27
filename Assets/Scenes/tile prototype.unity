@@ -341,7 +341,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f4e3864c9ba794495a1bb39ef92b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shrink: 0
+  shrinkSize: 0
+  shrinkRate: 0.1
+  shrinkInterval: 0.015625
   ui: {fileID: 429647610}
 --- !u!1 &720915626
 GameObject:
@@ -1036,7 +1038,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f4e3864c9ba794495a1bb39ef92b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shrink: 0
+  shrinkSize: 0
+  shrinkRate: 0.1
+  shrinkInterval: 0.015625
   ui: {fileID: 1298702215}
 --- !u!1 &1352650410
 GameObject:
