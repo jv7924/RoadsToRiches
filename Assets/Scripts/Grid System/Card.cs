@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -85,7 +86,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             if(hit.transform.gameObject.CompareTag("Board"))
             {
-                if(gridManager.checkSurroundingCoords(hit.transform.name, road))
+                if(gridManager.checkSurroundingCoords(hit.transform.name, road)) //Check for valid road placement
                 {
                     gridManager.PlayBuildSound();
                     gridManager.addToList(hit.transform.name, road);
@@ -133,6 +134,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         int returnValue = gridManager.CheckIfWon();
         if (returnValue != 0)
         {
+            SceneManager.LoadScene("PlayerWin");
             Debug.Log($"Player {returnValue} has won!");
         }
     }

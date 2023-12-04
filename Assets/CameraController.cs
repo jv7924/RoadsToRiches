@@ -5,36 +5,28 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private Vector3 previousPosition;
+    private bool cameraMove = false;
+    [SerializeField] private int speed = 2;
+    [SerializeField] private GameObject startPosition;
     [SerializeField] private float minZoom;
     [SerializeField] private float maxZoom; 
     [SerializeField] private Camera cam;
     [SerializeField] private Transform target;
     [SerializeField] private float distanceToTarget = 10;
-    //[SerializeField] private float sensitivity = .5f;
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        /*
-        if (Input.GetKey(KeyCode.Mouse2))
-        {
-            turn.x += Input.GetAxis("Mouse X") * sensitivity;
-            turn.y += Input.GetAxis("Mouse Y") * sensitivity;
-            transform.localRotation = Quaternion.Euler(-turn.y, turn.x, 0);
-        }
-        */
-
+        //Rotate Camera
         cam.transform.position = target.position;
-
         if (Input.GetMouseButtonDown(2))
         {
             previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
         }
-
         if (Input.GetMouseButton(2))
         {
             Vector3 direction = previousPosition - cam.ScreenToViewportPoint(Input.mousePosition);
@@ -44,7 +36,6 @@ public class CameraController : MonoBehaviour
             
             previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
         }
-        
         cam.transform.Translate(new Vector3(0,0,-distanceToTarget));
 
         //Zoom In
@@ -57,6 +48,25 @@ public class CameraController : MonoBehaviour
         if (Input.GetAxis("Mouse ScrollWheel")<0 && (cam.fieldOfView < minZoom))
         {
             cam.fieldOfView++;
+        }
+
+        //Reset Camera
+        if (cameraMove)
+        {
+            //cam.transform.position = Vector3.Lerp(cam.transform.position, startPosition.transform.position, speed * Time.deltaTime);
+            //cam.transform.rotation = Quaternion.Lerp(cam.transform.rotation, startPosition.transform.rotation, speed * Time.deltaTime);
+        }
+
+        if (cam.transform.rotation == startPosition.transform.rotation)
+        {
+            cameraMove = false;
+        }
+
+        if (Input.GetKeyDown("r"))
+        {
+            cam.transform.position = startPosition.transform.position;
+            cam.transform.rotation = startPosition.transform.rotation;
+            //cameraMove = true;
         }
     }
 }

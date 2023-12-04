@@ -272,13 +272,7 @@ public class GridManager : MonoBehaviour
             {
                 canLeft = true;
             }
-
-            /*Road tempRoad2 = tiles[x,y];
-            Debug.Log("up " + tempRoad2.CheckIfPossibleConnection("up").ToString());
-            Debug.Log("right " + tempRoad2.CheckIfPossibleConnection("right").ToString());
-            Debug.Log("down " + tempRoad2.CheckIfPossibleConnection("down").ToString());
-            Debug.Log("left " + tempRoad2.CheckIfPossibleConnection("left").ToString());*/
-
+            
                 //DEBUG STATEMENTS
                 //Debug.Log("up " + tempRoad.CheckIfPossibleConnection("up").ToString());
                 //Debug.Log("right " + tempRoad.CheckIfPossibleConnection("right").ToString());
