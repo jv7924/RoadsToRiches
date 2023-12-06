@@ -9,4 +9,9 @@ public class TitleScreen : MonoBehaviour
     {
         SceneManager.LoadScene("tile prototype");
     }
+
+    public void LoadTitleScene()
+    {
+        SceneManager.LoadScene("Title");
+    }
 }

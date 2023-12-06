@@ -21,7 +21,7 @@ public class OfflineTurnSystem : MonoBehaviour
         turn = 0;
         for(int i = 0; i < players.Length; i++)
         {
-            for(int j = 0; j < 7; j++)
+            for(int j = 0; j < 5; j++)
             {
                 DrawCard(players[i]);
             }

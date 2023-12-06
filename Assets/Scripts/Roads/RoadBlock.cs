@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class RoadBlock : Road
 {
@@ -12,6 +13,7 @@ public class RoadBlock : Road
         left  = new KeyValuePair<bool, Road>(false, null);
         right = new KeyValuePair<bool, Road>(false, null);
         rotation = 0;
+        uniqueID = Guid.NewGuid();
     }
 
 }
