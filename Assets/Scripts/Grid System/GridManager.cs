@@ -162,6 +162,14 @@ public class GridManager : MonoBehaviour
         Debug.Log("Param passed: " + roadName);
         Debug.Log("Array item: " + roads[0].name);
 
+        string toRemove = "(Clone)";
+        int i = roadName.IndexOf(toRemove);
+
+        if (i >= 0)
+        {
+            roadName = roadName.Remove(i, toRemove.Length);
+        }
+
         string[] coords = name.Split(' ');
         int x = int.Parse(coords[1]);
         int y = int.Parse(coords[2]);
@@ -169,6 +177,8 @@ public class GridManager : MonoBehaviour
         {
             foreach (Road road in roads)
             {
+                // Debug.Log("Condition is road.name == roadName: " + (road.name == roadName));
+
                 if (road.name == roadName)
                 {
                     tiles[x, y] = road;
@@ -308,15 +318,15 @@ public class GridManager : MonoBehaviour
                 canLeft = true;
             }
             
-                //DEBUG STATEMENTS
-                //Debug.Log("up " + tempRoad.CheckIfPossibleConnection("up").ToString());
-                //Debug.Log("right " + tempRoad.CheckIfPossibleConnection("right").ToString());
-                //Debug.Log("down " + tempRoad.CheckIfPossibleConnection("down").ToString());
-                //Debug.Log("left " + tempRoad.CheckIfPossibleConnection("left").ToString());
-                //Debug.Log("up " + canUp.ToString());
-                //Debug.Log("right " + canRight.ToString());
-                //Debug.Log("down " + canDown.ToString());
-                //Debug.Log("left " + canLeft.ToString());
+                // DEBUG STATEMENTS
+                // Debug.Log("up " + tempRoad.CheckIfPossibleConnection("up").ToString());
+                // Debug.Log("right " + tempRoad.CheckIfPossibleConnection("right").ToString());
+                // Debug.Log("down " + tempRoad.CheckIfPossibleConnection("down").ToString());
+                // Debug.Log("left " + tempRoad.CheckIfPossibleConnection("left").ToString());
+                Debug.Log("up " + canUp.ToString());
+                Debug.Log("right " + canRight.ToString());
+                Debug.Log("down " + canDown.ToString());
+                Debug.Log("left " + canLeft.ToString());
             
             if (canUp && canRight && canDown && canLeft && oneConnection) //Check all directions
             {
