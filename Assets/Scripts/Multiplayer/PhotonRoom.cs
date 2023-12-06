@@ -23,8 +23,6 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     public static PhotonRoom Room;
     public int currentScene = 0;
 
-    public OnlineTurnSystem turnSystem;
-    
     #endregion
 
     #region MonoBehaviour
@@ -97,7 +95,6 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
         if (currentScene == multiplayerScene)
         {
-            turnSystem = FindObjectOfType<OnlineTurnSystem>();
             // Instantiate player prefab then set this instance of the prefab as the local player for this device
             Invoke("CreatePlayer", 2f);
         }
@@ -107,7 +104,6 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     {
         GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0, 0, 0), Quaternion.identity, 0);
         // OnlineTurnSystem turnSystem = new OnlineTurnSystem();
-        turnSystem.SetLocalPlayer(player.transform.GetChild(0).gameObject);
     }
     
     #endregion
