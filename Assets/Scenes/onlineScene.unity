@@ -468,6 +468,7 @@ GameObject:
   - component: {fileID: 1284948647}
   - component: {fileID: 1284948646}
   - component: {fileID: 1284948648}
+  - component: {fileID: 1284948649}
   m_Layer: 0
   m_Name: GridManager
   m_TagString: Untagged
@@ -499,6 +500,13 @@ MonoBehaviour:
   audio: {fileID: 1284948648}
   drawSound: {fileID: 8300000, guid: c3fd3f8ae46133042b854182f5a25533, type: 3}
   buildSound: {fileID: 8300000, guid: f80a3d689d6f66946b8682805f7e7c98, type: 3}
+  photonView: {fileID: 0}
+  roads:
+  - {fileID: 895165669720053783, guid: 6807cd3d5ef4e7a4faf6281189e09acd, type: 3}
+  - {fileID: 6809795272265845854, guid: db9b343507931d54f887ffda8339859a, type: 3}
+  - {fileID: 7932925899388440623, guid: 263129a5ccdd0e7459efabd279d8bbbb, type: 3}
+  - {fileID: 6087241045649735179, guid: 5a939f59c2d842447a115bfae0a07380, type: 3}
+  - {fileID: 3065389386196457807, guid: 933c2bf552f716c47bb1b1a726e3e51e, type: 3}
 --- !u!4 &1284948647
 Transform:
   m_ObjectHideFlags: 0
@@ -610,6 +618,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1284948649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284948645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 2
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1352650410
 GameObject:
   m_ObjectHideFlags: 0

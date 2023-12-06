@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Text.RegularExpressions;
+using Photon.Pun;
 
 public class GridManager : MonoBehaviour
 {
@@ -26,6 +27,11 @@ public class GridManager : MonoBehaviour
 
     private Road[,] tiles;
 
+    public PhotonView photonView;
+
+    [SerializeField]
+    private Road[] roads;
+
     public struct Coordinates
     {
         // Should only be able to get the value, not set it
@@ -43,6 +49,8 @@ public class GridManager : MonoBehaviour
     {
         tiles = new Road[width, height];
         GenerateGrid();
+
+        photonView = GetComponent<PhotonView>();
     }
 
     void Update()   // Purely for debugging. Press enter to print out the whole array
@@ -145,6 +153,33 @@ public class GridManager : MonoBehaviour
             tiles[x, y] = road;
             //Debug.Log("tile: " + tiles[x,y]);
             return true;
+        }
+    }
+
+    [PunRPC]
+    public void RPC_addToList(string name, string roadName)
+    {
+        Debug.Log("Param passed: " + roadName);
+        Debug.Log("Array item: " + roads[0].name);
+
+        string[] coords = name.Split(' ');
+        int x = int.Parse(coords[1]);
+        int y = int.Parse(coords[2]);
+        if(tiles[x, y] == null)
+        {
+            foreach (Road road in roads)
+            {
+                if (road.name == roadName)
+                {
+                    tiles[x, y] = road;
+                }
+            }
+            // return false;
+        }
+        else
+        {
+            //Debug.Log("tile: " + tiles[x,y]);
+            // return true;
         }
     }
 
