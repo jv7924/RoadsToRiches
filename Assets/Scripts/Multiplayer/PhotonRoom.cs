@@ -22,6 +22,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     
     public static PhotonRoom Room;
     public int currentScene = 0;
+    public OnlineTurnSystem onlineTurnSystem;
 
     #endregion
 
