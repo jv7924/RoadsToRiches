@@ -94,7 +94,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     GameObject tile = PhotonNetwork.Instantiate(tilePrefab.name, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
                     tile.transform.Rotate(0, rotation, 0);
                     eventData.pointerDrag.transform.SetParent(discardPile.transform);
-                    offlineTurnSystem.ChangeTurn();
+                    // offlineTurnSystem.ChangeTurn();
                     OnlineTurnSystem.instance.photonView.RPC("RPC_IncrementTurn", RpcTarget.AllBuffered);
                     gridManager.PlayDrawSound();
                 }
