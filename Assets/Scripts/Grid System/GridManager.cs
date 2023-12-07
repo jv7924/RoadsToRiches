@@ -195,6 +195,8 @@ public class GridManager : MonoBehaviour
 
     public bool checkSurroundingCoords(string name, Road road)
     {
+        checkRoad(road);
+
         string[] coords = name.Split(' ');
         int[] upCoords = new int[2];
         int[] rightCoords = new int[2];
@@ -323,10 +325,10 @@ public class GridManager : MonoBehaviour
                 // Debug.Log("right " + tempRoad.CheckIfPossibleConnection("right").ToString());
                 // Debug.Log("down " + tempRoad.CheckIfPossibleConnection("down").ToString());
                 // Debug.Log("left " + tempRoad.CheckIfPossibleConnection("left").ToString());
-                Debug.Log("up " + canUp.ToString());
-                Debug.Log("right " + canRight.ToString());
-                Debug.Log("down " + canDown.ToString());
-                Debug.Log("left " + canLeft.ToString());
+                // Debug.Log("up " + canUp.ToString());
+                // Debug.Log("right " + canRight.ToString());
+                // Debug.Log("down " + canDown.ToString());
+                // Debug.Log("left " + canLeft.ToString());
             
             if (canUp && canRight && canDown && canLeft && oneConnection) //Check all directions
             {
