@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 815166170666710528}
   - component: {fileID: 4710837953372417475}
   - component: {fileID: 6809795272265845854}
+  - component: {fileID: -155237182978046338}
   m_Layer: 5
   m_Name: BendedTurn Card 1
   m_TagString: Untagged
@@ -94,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridManager: {fileID: 0}
   offlineTurnSystem: {fileID: 0}
+  discardPile: {fileID: 0}
   road: {fileID: 6809795272265845854}
   tilePrefab: {fileID: 7288453631696309828, guid: 98169827f7462244482380f609f74703, type: 3}
   shrink: 0.5
@@ -141,6 +143,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9a60219a36ab149aea8a04aa7deae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-155237182978046338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2791998800565049613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2862094623809248292
 GameObject:
   m_ObjectHideFlags: 0

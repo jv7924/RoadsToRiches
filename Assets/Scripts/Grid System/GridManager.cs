@@ -32,6 +32,9 @@ public class GridManager : MonoBehaviour
     [SerializeField]
     private Road[] roads;
 
+    [SerializeField]
+    private GameObject discardPile;
+
     public struct Coordinates
     {
         // Should only be able to get the value, not set it
@@ -151,8 +154,27 @@ public class GridManager : MonoBehaviour
         else
         {
             tiles[x, y] = road;
+            road.transform.SetParent(discardPile.transform);
             //Debug.Log("tile: " + tiles[x,y]);
             return true;
+        }
+    }
+    
+
+    [PunRPC]
+    public void RPC_addToList(string name, int roadID)
+    {
+        // Road roadPassed = PhotonView.Find(roadID).GetComponent<Road>();
+        Debug.Log(PhotonView.Find(roadID).GetComponent<Road>().ToString());
+
+        string[] coords = name.Split(' ');
+        int x = int.Parse(coords[1]);
+        int y = int.Parse(coords[2]);
+        if(tiles[x, y] == null)
+        {
+            // tiles[x, y] = roadPassed;
+            // roadPassed.transform.SetParent(discardPile.transform);
+            // return false;
         }
     }
 
@@ -160,7 +182,6 @@ public class GridManager : MonoBehaviour
     public void RPC_addToList(string name, string roadName)
     {
         Debug.Log("Param passed: " + roadName);
-        Debug.Log("Array item: " + roads[0].name);
 
         string toRemove = "(Clone)";
         int i = roadName.IndexOf(toRemove);
@@ -184,12 +205,6 @@ public class GridManager : MonoBehaviour
                     tiles[x, y] = road;
                 }
             }
-            // return false;
-        }
-        else
-        {
-            //Debug.Log("tile: " + tiles[x,y]);
-            // return true;
         }
     }
 

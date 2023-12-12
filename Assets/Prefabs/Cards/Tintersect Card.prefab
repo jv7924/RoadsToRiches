@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 652750138168234413}
   - component: {fileID: 7840907719187970370}
   - component: {fileID: 7487562079561877731}
+  - component: {fileID: 5575408745460287211}
   m_Layer: 5
   m_Name: Tintersect Card
   m_TagString: Untagged
@@ -112,6 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridManager: {fileID: 0}
+  offlineTurnSystem: {fileID: 0}
+  discardPile: {fileID: 0}
   road: {fileID: 7840907719187970370}
   tilePrefab: {fileID: 5486992922669795158, guid: eabbd99842bb2f945bdb0193ebbdd4d5, type: 3}
   shrink: 0.5
@@ -127,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa84d304fc2e3044c87b899473ba3b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadSprite: {fileID: 2100000, guid: 5ab6d1c5d6c29b34f9665ab69d6f7138, type: 2}
 --- !u!225 &7487562079561877731
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -140,3 +142,25 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &5575408745460287211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597378518435985877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

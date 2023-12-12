@@ -25154,6 +25154,7 @@ MonoBehaviour:
   - {fileID: 7932925899388440623, guid: 263129a5ccdd0e7459efabd279d8bbbb, type: 3}
   - {fileID: 6087241045649735179, guid: 5a939f59c2d842447a115bfae0a07380, type: 3}
   - {fileID: 3065389386196457807, guid: 933c2bf552f716c47bb1b1a726e3e51e, type: 3}
+  discardPile: {fileID: 1792098225}
 --- !u!4 &1284948647
 Transform:
   m_ObjectHideFlags: 0

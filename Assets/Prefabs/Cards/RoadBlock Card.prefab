@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1900388535630954770}
   - component: {fileID: 1143645144547536783}
   - component: {fileID: 8910610012695678062}
+  - component: {fileID: -6478250256419748951}
   m_Layer: 5
   m_Name: RoadBlock Card
   m_TagString: Untagged
@@ -112,6 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridManager: {fileID: 0}
+  offlineTurnSystem: {fileID: 0}
+  discardPile: {fileID: 0}
   road: {fileID: 1143645144547536783}
   tilePrefab: {fileID: 7284531818685192310, guid: 0f09d5de396097245b6e0e32feb2f86b, type: 3}
   shrink: 0.5
@@ -127,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c73471e84c3a046b7784cd1c517121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadSprite: {fileID: 2100000, guid: 4fc6bc99528534442b0633ebda88a325, type: 2}
 --- !u!225 &8910610012695678062
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -140,3 +142,25 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &-6478250256419748951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7335203589953758589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

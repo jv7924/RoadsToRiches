@@ -92,10 +92,10 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 if(gridManager.checkSurroundingCoords(hit.transform.name, road)) //Check for valid road placement
                 {
                     gridManager.PlayBuildSound();
-                    // gridManager.addToList(hit.transform.name, road);
-                    gridManager.photonView.RPC("RPC_addToList", RpcTarget.AllBuffered, hit.transform.name, road.name);
+                    // gridManager.addToList(hit.transform.name, road);    // offline
                     GameObject tile = PhotonNetwork.Instantiate(tilePrefab.name, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
-                    // GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
+                    gridManager.photonView.RPC("RPC_addToList", RpcTarget.AllBuffered, hit.transform.name, road.name);
+                    // GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation); // offline
                     tile.transform.Rotate(0, rotation, 0);
                     eventData.pointerDrag.transform.SetParent(discardPile.transform);
                     // offlineTurnSystem.ChangeTurn();
@@ -143,5 +143,10 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             SceneManager.LoadScene("PlayerWin");
             Debug.Log($"Player {returnValue} has won!");
         }
+    }
+
+    private void RPC_IDk()
+    {
+        // eventData.pointerDrag.transform.SetParent(discardPile.transform);
     }
 }
