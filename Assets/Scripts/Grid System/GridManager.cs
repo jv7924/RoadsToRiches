@@ -159,24 +159,6 @@ public class GridManager : MonoBehaviour
             return true;
         }
     }
-    
-
-    [PunRPC]
-    public void RPC_addToList(string name, int roadID)
-    {
-        // Road roadPassed = PhotonView.Find(roadID).GetComponent<Road>();
-        Debug.Log(PhotonView.Find(roadID).GetComponent<Road>().ToString());
-
-        string[] coords = name.Split(' ');
-        int x = int.Parse(coords[1]);
-        int y = int.Parse(coords[2]);
-        if(tiles[x, y] == null)
-        {
-            // tiles[x, y] = roadPassed;
-            // roadPassed.transform.SetParent(discardPile.transform);
-            // return false;
-        }
-    }
 
     [PunRPC]
     public void RPC_addToList(string name, string roadName)
@@ -202,7 +184,9 @@ public class GridManager : MonoBehaviour
 
                 if (road.name == roadName)
                 {
-                    tiles[x, y] = road;
+                    Road roadClone = Instantiate(road);
+                    tiles[x, y] = roadClone;
+                    roadClone.transform.SetParent(discardPile.transform);
                 }
             }
         }
