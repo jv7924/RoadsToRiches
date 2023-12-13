@@ -10,6 +10,11 @@ public class TitleScreen : MonoBehaviour
         SceneManager.LoadScene("tile prototype");
     }
 
+    public void LoadOnlineScene()
+    {
+        SceneManager.LoadScene("Lobby");
+    }
+
     public void LoadTitleScene()
     {
         SceneManager.LoadScene("Title");

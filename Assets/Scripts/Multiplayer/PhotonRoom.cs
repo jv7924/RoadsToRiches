@@ -14,7 +14,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     private GameObject playerPrefab;
 
     [Tooltip("Multiplayer scene index"), SerializeField]
-    private int multiplayerScene = 1;
+    private int multiplayerScene = 3;
     
     #endregion
 
