@@ -66,6 +66,7 @@ public class CameraController : MonoBehaviour
         {
             cam.transform.position = startPosition.transform.position;
             cam.transform.rotation = startPosition.transform.rotation;
+            cam.fieldOfView = 60;
             //cameraMove = true;
         }
     }
