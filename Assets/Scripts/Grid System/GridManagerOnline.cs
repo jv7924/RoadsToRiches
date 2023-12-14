@@ -5,7 +5,7 @@ using System;
 using System.Text.RegularExpressions;
 using Photon.Pun;
 
-public class GridManager : MonoBehaviour
+public class GridManagerOnline : MonoBehaviour
 {
     [SerializeField]
     private int width, height, camHeight, camOffset;
@@ -35,13 +35,6 @@ public class GridManager : MonoBehaviour
     [SerializeField]
     private GameObject discardPile;
 
-    private int winningPlayerNumber;
-    public GameObject WinCanvas;
-    public GameObject ChipCanvas;
-    public GameObject player1Canvas;
-    public GameObject player2Canvas;
-    public GameObject turnSystem;
-
     public struct Coordinates
     {
         // Should only be able to get the value, not set it
@@ -63,11 +56,6 @@ public class GridManager : MonoBehaviour
         photonView = GetComponent<PhotonView>();
     }
 
-    public void GameWon(int playerNumber)
-    {
-        winningPlayerNumber = playerNumber;
-    }
-
     void Update()   // Purely for debugging. Press enter to print out the whole array
     {
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
@@ -81,16 +69,6 @@ public class GridManager : MonoBehaviour
             {
                 Debug.Log("YES, Thats a casino");
             }
-        }
-
-        if (winningPlayerNumber != 0)
-        {
-            WinCanvas.SetActive(true);
-            ChipCanvas.SetActive(true);
-            player1Canvas.SetActive(false);
-            player2Canvas.SetActive(false);
-            turnSystem.SetActive(false);
-            WinCanvas.GetComponent<WinCanvas>().UpdateText(winningPlayerNumber);
         }
     }
 
