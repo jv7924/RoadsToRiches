@@ -392,6 +392,46 @@ public class GridManager : MonoBehaviour
         return neighboringTiles;
     }
 
+    // Takes in the coords for the parent road and a neigboring road and returns true if they have connecting streets
+    public bool CheckIfRoadsAreConnected(Coordinates parentRoad, Coordinates neighboringRoad)
+    {
+        // Check if the neighboring road is up, down, left or right of the parent road
+        if (neighboringRoad.y > parentRoad.y)  // Up
+        {
+            if (tiles[neighboringRoad.x, neighboringRoad.y].CheckIfPossibleConnection("down") == true &&
+                tiles[parentRoad.x, parentRoad.y].CheckIfPossibleConnection("up") == true)
+            {
+                return true;
+            }
+            
+        }
+        else if (neighboringRoad.y < parentRoad.y)  // Down
+        {
+            if (tiles[neighboringRoad.x, neighboringRoad.y].CheckIfPossibleConnection("up") == true &&
+                tiles[parentRoad.x, parentRoad.y].CheckIfPossibleConnection("down") == true)
+            {
+                return true;
+            }
+        }
+        else if (neighboringRoad.x < parentRoad.x)  // Left
+        {
+            if (tiles[neighboringRoad.x, neighboringRoad.y].CheckIfPossibleConnection("right") == true &&
+                tiles[parentRoad.x, parentRoad.y].CheckIfPossibleConnection("left") == true)
+            {
+                return true;
+            }
+        }
+        else if (neighboringRoad.x > parentRoad.x)  // Right
+        {
+            if (tiles[neighboringRoad.x, neighboringRoad.y].CheckIfPossibleConnection("left") == true &&
+                tiles[parentRoad.x, parentRoad.y].CheckIfPossibleConnection("right") == true)
+            {
+                return true;
+            }
+        }
+        return false;  // Streets are not connected
+    }
+
     // Returns the number of the player who has won the game or 0 if the game has not been won yet
     // Uses method overloading to pass in default values for the airport coordinates and an empty list
     public int CheckIfWon()
@@ -424,8 +464,12 @@ public class GridManager : MonoBehaviour
         int returnValue = 0;
         foreach (Coordinates coords in GetNeighboringRoadCoords(road))  // Iterate through all neighboring roads
         {
-            returnValue = CheckIfWon(coords, exploredRoads);
-            if (returnValue != 0) { break; }  // Break if we've found a casino, the game has been won
+            // Make sure the roads are not only neighboring, but also have streets connecting
+            if ( CheckIfRoadsAreConnected(road, coords) == true )
+            {
+                returnValue = CheckIfWon(coords, exploredRoads);
+                if (returnValue != 0) { break; }  // Break if we've found a casino, the game has been won
+            }
         }
         return returnValue;
     }
