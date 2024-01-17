@@ -5,7 +5,7 @@ using System;
 using System.Text.RegularExpressions;
 using Photon.Pun;
 
-public class GridManager : MonoBehaviour
+public class GridManagerOnline : MonoBehaviour
 {
     [SerializeField]
     private int width, height, camHeight, camOffset;
@@ -35,13 +35,6 @@ public class GridManager : MonoBehaviour
     [SerializeField]
     private GameObject discardPile;
 
-    private int winningPlayerNumber;
-    public GameObject WinCanvas;
-    public GameObject ChipCanvas;
-    public GameObject player1Canvas;
-    public GameObject player2Canvas;
-    public GameObject turnSystem;
-
     public struct Coordinates
     {
         // Should only be able to get the value, not set it
@@ -63,11 +56,6 @@ public class GridManager : MonoBehaviour
         photonView = GetComponent<PhotonView>();
     }
 
-    public void GameWon(int playerNumber)
-    {
-        winningPlayerNumber = playerNumber;
-    }
-
     void Update()   // Purely for debugging. Press enter to print out the whole array
     {
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
@@ -81,16 +69,6 @@ public class GridManager : MonoBehaviour
             {
                 Debug.Log("YES, Thats a casino");
             }
-        }
-
-        if (winningPlayerNumber != 0)
-        {
-            WinCanvas.SetActive(true);
-            ChipCanvas.SetActive(true);
-            player1Canvas.SetActive(false);
-            player2Canvas.SetActive(false);
-            turnSystem.SetActive(false);
-            WinCanvas.GetComponent<WinCanvas>().UpdateText(winningPlayerNumber);
         }
     }
 
@@ -183,10 +161,10 @@ public class GridManager : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_addToList(string name, string roadName, int rotation)     //, bool up, bool down, bool left, bool right
+    public void RPC_addToList(string name, string roadName)
     {
-        int timesRotated = rotation/90;
-        Debug.Log("Times rotated: " + timesRotated);
+        Debug.Log("Param passed: " + roadName);
+
         string toRemove = "(Clone)";
         int i = roadName.IndexOf(toRemove);
 
@@ -207,28 +185,6 @@ public class GridManager : MonoBehaviour
                 if (road.name == roadName)
                 {
                     Road roadClone = Instantiate(road);
-                    // Set keys here
-                    Debug.Log("Up: " + roadClone.up.Key);
-                    Debug.Log("Down: " + roadClone.down.Key);
-                    Debug.Log("Left: " + roadClone.left.Key);
-                    Debug.Log("Right: " + roadClone.right.Key);
-                    
-                    if (timesRotated < 0)
-                    {
-                        for (int j = 0; j > timesRotated; j--)
-                        {
-                            roadClone.RotateCounterClock();
-                        }
-                    }
-                    else if(timesRotated > 0)
-                    {
-                        for (int j = 0; j < timesRotated; j++)
-                        {
-                            roadClone.RotateClock();
-                        }
-                    }
-
-
                     tiles[x, y] = roadClone;
                     roadClone.transform.SetParent(discardPile.transform);
                 }
@@ -391,10 +347,10 @@ public class GridManager : MonoBehaviour
 
     public void checkRoad(Road road)
     {
-        // Debug.Log("up " + road.CheckIfPossibleConnection("up").ToString());
-        // Debug.Log("right " + road.CheckIfPossibleConnection("right").ToString());
-        // Debug.Log("down " + road.CheckIfPossibleConnection("down").ToString());
-        // Debug.Log("left " + road.CheckIfPossibleConnection("left").ToString());
+        Debug.Log("up " + road.CheckIfPossibleConnection("up").ToString());
+        Debug.Log("right " + road.CheckIfPossibleConnection("right").ToString());
+        Debug.Log("down " + road.CheckIfPossibleConnection("down").ToString());
+        Debug.Log("left " + road.CheckIfPossibleConnection("left").ToString());
     }
 
     // Takes in Coordinates and returns a list of Coordinates for all neighboring tiles that have a Road
