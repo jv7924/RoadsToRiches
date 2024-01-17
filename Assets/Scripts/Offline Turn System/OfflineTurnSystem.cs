@@ -14,6 +14,9 @@ public class OfflineTurnSystem : MonoBehaviour
     [SerializeField]
     private GameObject roadBlock, fourWay, tIntersection, bendedTurn, straight;
 
+    [SerializeField]
+    private Animation cardAnim;
+
     private int turn;
 
     void Start()
@@ -44,6 +47,8 @@ public class OfflineTurnSystem : MonoBehaviour
 
     public void ChangeTurn()
     {
+        string anim = "Card Draw Player " + (turn + 1);
+        cardAnim.Play(anim);
         DrawCard(players[turn]);
         turn += 1;
         if(turn >= players.Length)
