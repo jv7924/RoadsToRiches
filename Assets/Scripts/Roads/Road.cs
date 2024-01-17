@@ -14,10 +14,27 @@ public class Road : MonoBehaviour
     public KeyValuePair<bool, Road> down;
     public KeyValuePair<bool, Road> left;
     public KeyValuePair<bool, Road> right;
+
+    // public bool upKey;
+    // public bool downKey;
+    // public bool leftKey;
+    // public bool rightKey;
+
     // Stores the rotation of the road in degrees
     // Starts at 0 and increases by 90 in the counter-clockwise direction
     protected int rotation;
     protected Guid uniqueID;
+
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    // private void Update()
+    // {
+    //     upKey = up.Key;
+    //     downKey = down.Key;
+    //     leftKey = left.Key;
+    //     rightKey = right.Key;
+    // }
 
     // Retrieves the unique ID for the class instance
     public Guid GetGuid()
@@ -28,6 +45,7 @@ public class Road : MonoBehaviour
     // Rotates the roads directions by 90 degrees clockwise
     public void RotateClock()
     {
+        // Debug.Log("Rotate CW");
         KeyValuePair<bool, Road> tempU = up;
         KeyValuePair<bool, Road> tempD = down;
         KeyValuePair<bool, Road> tempL = left;
@@ -45,6 +63,7 @@ public class Road : MonoBehaviour
     // Rotates the roads directions by 90 degrees counter-clockwise
     public void RotateCounterClock()
     {
+        // Debug.Log("Rotate CCW");
         KeyValuePair<bool, Road> tempU = up;
         KeyValuePair<bool, Road> tempD = down;
         KeyValuePair<bool, Road> tempL = left;

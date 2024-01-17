@@ -161,10 +161,10 @@ public class GridManager : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_addToList(string name, string roadName)
+    public void RPC_addToList(string name, string roadName, int rotation)     //, bool up, bool down, bool left, bool right
     {
-        Debug.Log("Param passed: " + roadName);
-
+        int timesRotated = rotation/90;
+        Debug.Log("Times rotated: " + timesRotated);
         string toRemove = "(Clone)";
         int i = roadName.IndexOf(toRemove);
 
@@ -185,6 +185,28 @@ public class GridManager : MonoBehaviour
                 if (road.name == roadName)
                 {
                     Road roadClone = Instantiate(road);
+                    // Set keys here
+                    Debug.Log("Up: " + roadClone.up.Key);
+                    Debug.Log("Down: " + roadClone.down.Key);
+                    Debug.Log("Left: " + roadClone.left.Key);
+                    Debug.Log("Right: " + roadClone.right.Key);
+                    
+                    if (timesRotated < 0)
+                    {
+                        for (int j = 0; j > timesRotated; j--)
+                        {
+                            roadClone.RotateCounterClock();
+                        }
+                    }
+                    else if(timesRotated > 0)
+                    {
+                        for (int j = 0; j < timesRotated; j++)
+                        {
+                            roadClone.RotateClock();
+                        }
+                    }
+
+
                     tiles[x, y] = roadClone;
                     roadClone.transform.SetParent(discardPile.transform);
                 }
@@ -347,10 +369,10 @@ public class GridManager : MonoBehaviour
 
     public void checkRoad(Road road)
     {
-        Debug.Log("up " + road.CheckIfPossibleConnection("up").ToString());
-        Debug.Log("right " + road.CheckIfPossibleConnection("right").ToString());
-        Debug.Log("down " + road.CheckIfPossibleConnection("down").ToString());
-        Debug.Log("left " + road.CheckIfPossibleConnection("left").ToString());
+        // Debug.Log("up " + road.CheckIfPossibleConnection("up").ToString());
+        // Debug.Log("right " + road.CheckIfPossibleConnection("right").ToString());
+        // Debug.Log("down " + road.CheckIfPossibleConnection("down").ToString());
+        // Debug.Log("left " + road.CheckIfPossibleConnection("left").ToString());
     }
 
     // Takes in Coordinates and returns a list of Coordinates for all neighboring tiles that have a Road

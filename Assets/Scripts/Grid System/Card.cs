@@ -35,6 +35,11 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public float shrink;
 
+    public bool upKey;
+    public bool downKey;
+    public bool leftKey;
+    public bool rightKey;
+
     void Awake()
     {
         rotation = 0;
@@ -95,7 +100,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     GameObject tile = PhotonNetwork.Instantiate(tilePrefab.name, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
                     // eventData.pointerDrag.transform.SetParent(discardPile.transform);
                     // gridManager.addToList(hit.transform.name, road);    // offline
-                    gridManager.photonView.RPC("RPC_addToList", RpcTarget.AllBuffered, hit.transform.name, road.name);
+                    gridManager.photonView.RPC("RPC_addToList", RpcTarget.All, hit.transform.name, road.name, rotation);       //, upKey, downKey, leftKey, rightKey
                     // GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation); // offline
                     tile.transform.Rotate(0, rotation, 0);
                     // offlineTurnSystem.ChangeTurn();
