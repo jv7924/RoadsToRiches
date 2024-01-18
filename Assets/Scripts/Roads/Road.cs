@@ -39,6 +39,10 @@ public class Road : MonoBehaviour
     // Used for updating the values of the class from an rpc
     public void SyncValues(bool _up, bool _down, bool _left, bool _right, int _rotation)
     {
+        Debug.Log("up: " + _up);
+        Debug.Log("down: " + _down);
+        Debug.Log("left: " + _left);
+        Debug.Log("right: " + _right);
         up = new KeyValuePair<bool, Road>(_up, null);
         down = new KeyValuePair<bool, Road>(_down, null);
         left = new KeyValuePair<bool, Road>(_left, null);
