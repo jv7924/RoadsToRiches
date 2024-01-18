@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Photon.Pun;
 
 public class Road : MonoBehaviour
 {
@@ -22,8 +23,9 @@ public class Road : MonoBehaviour
 
     // Stores the rotation of the road in degrees
     // Starts at 0 and increases by 90 in the counter-clockwise direction
-    protected int rotation;
+    public int rotation;
     protected Guid uniqueID;
+
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -38,6 +40,23 @@ public class Road : MonoBehaviour
 
     // Used for updating the values of the class from an rpc
     public void SyncValues(bool _up, bool _down, bool _left, bool _right, int _rotation)
+    {
+        Debug.Log("up: " + _up);
+        Debug.Log("down: " + _down);
+        Debug.Log("left: " + _left);
+        Debug.Log("right: " + _right);
+        Debug.Log("Rotation: " + _rotation);
+
+        up = new KeyValuePair<bool, Road>(_up, null);
+        down = new KeyValuePair<bool, Road>(_down, null);
+        left = new KeyValuePair<bool, Road>(_left, null);
+        right = new KeyValuePair<bool, Road>(_right, null);
+        rotation = _rotation;
+    }
+
+    // Used for updating the values of the class from an rpc
+    [PunRPC]
+    public void RPC_SyncValues(bool _up, bool _down, bool _left, bool _right, int _rotation)
     {
         Debug.Log("up: " + _up);
         Debug.Log("down: " + _down);

@@ -183,7 +183,7 @@ public class GridManager : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_addToList(string name, string roadName, bool up, bool down, bool left, bool right, int rotation)
+    public void RPC_addToList(string name, string roadName, bool _up, bool _down, bool _left, bool _right, int _rotation)
     {
         // int timesRotated = rotation/90;
         // Debug.Log("Times rotated: " + timesRotated);
@@ -207,18 +207,25 @@ public class GridManager : MonoBehaviour
                 if (road.name == roadName)
                 {
                     Road roadClone = Instantiate(road);
-                    roadClone.SyncValues(up, down, left, right, rotation);
+                    roadClone.transform.SetParent(discardPile.transform);
+                    // roadClone.photonView.RPC("SyncValues", RpcTarget.All, up, down, left, right, rotation);
+                    // roadClone
+
+                    roadClone.up = new KeyValuePair<bool, Road>(_up, null);
+                    roadClone.down = new KeyValuePair<bool, Road>(_down, null);
+                    roadClone.left = new KeyValuePair<bool, Road>(_left, null);
+                    roadClone.right = new KeyValuePair<bool, Road>(_right, null);
+                    roadClone.rotation = _rotation;
 
                     tiles[x, y] = roadClone;
-                    roadClone.transform.SetParent(discardPile.transform);
-                   
+
                     // Set keys here
                     Debug.Log("After sync");
                     Debug.Log("Up: " + roadClone.up.Key);
                     Debug.Log("Down: " + roadClone.down.Key);
                     Debug.Log("Left: " + roadClone.left.Key);
                     Debug.Log("Right: " + roadClone.right.Key);
-                    Debug.Log("Rotation: " + rotation);
+                    Debug.Log("Rotation: " + _rotation);
                 }
             }
         }
