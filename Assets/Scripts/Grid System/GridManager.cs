@@ -183,7 +183,7 @@ public class GridManager : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_addToList(string name, string roadName, int rotation)     //, bool up, bool down, bool left, bool right
+    public void RPC_addToList(string name, string roadName, bool up, bool down, bool left, bool right, int rotation)
     {
         int timesRotated = rotation/90;
         Debug.Log("Times rotated: " + timesRotated);
@@ -207,6 +207,8 @@ public class GridManager : MonoBehaviour
                 if (road.name == roadName)
                 {
                     Road roadClone = Instantiate(road);
+                    roadClone.SyncValues(up, down, left, right, rotation);
+                    
                     // Set keys here
                     Debug.Log("Up: " + roadClone.up.Key);
                     Debug.Log("Down: " + roadClone.down.Key);
@@ -234,6 +236,8 @@ public class GridManager : MonoBehaviour
                 }
             }
         }
+
+        
     }
 
     public bool checkSurroundingCoords(string name, Road road)
