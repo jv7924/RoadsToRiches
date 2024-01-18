@@ -36,6 +36,16 @@ public class Road : MonoBehaviour
     //     rightKey = right.Key;
     // }
 
+    // Used for updating the values of the class from an rpc
+    public void SyncValues(bool _up, bool _down, bool _left, bool _right, int _rotation)
+    {
+        up = new KeyValuePair<bool, Road>(_up, null);
+        down = new KeyValuePair<bool, Road>(_down, null);
+        left = new KeyValuePair<bool, Road>(_left, null);
+        right = new KeyValuePair<bool, Road>(_right, null);
+        rotation = _rotation;
+    }
+
     // Retrieves the unique ID for the class instance
     public Guid GetGuid()
     {
