@@ -43,6 +43,8 @@ public class Road : MonoBehaviour
         Debug.Log("down: " + _down);
         Debug.Log("left: " + _left);
         Debug.Log("right: " + _right);
+        Debug.Log("Rotation: " + _rotation);
+
         up = new KeyValuePair<bool, Road>(_up, null);
         down = new KeyValuePair<bool, Road>(_down, null);
         left = new KeyValuePair<bool, Road>(_left, null);
