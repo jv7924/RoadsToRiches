@@ -108,8 +108,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 if(gridManager.checkSurroundingCoords(hit.transform.name, road)) //Check for valid road placement
                 {
                     gridManager.PlayBuildSound();
-                    GameObject tile = PhotonNetwork.Instantiate(tilePrefab.name, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
-                    // GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation); // offline
+                    // GameObject tile = PhotonNetwork.Instantiate(tilePrefab.name, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
+                    GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation); // offline
                     
                     // gameObject.GetPhotonView().RPC("RPC_InstantiateRoad", RpcTarget.Others, hit.transform.position, hit.transform.rotation);
 

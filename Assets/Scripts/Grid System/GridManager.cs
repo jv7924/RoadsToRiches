@@ -207,6 +207,7 @@ public class GridManager : MonoBehaviour
                 if (road.name == roadName)
                 {
                     Road roadClone = Instantiate(road);
+                    Debug.Log(roadClone);
                     // roadClone.photonView.RPC("SyncValues", RpcTarget.All, up, down, left, right, rotation);
                     // roadClone
 
