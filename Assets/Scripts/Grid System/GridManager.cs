@@ -207,8 +207,6 @@ public class GridManager : MonoBehaviour
                 if (road.name == roadName)
                 {
                     Road roadClone = Instantiate(road);
-
-                    roadClone.transform.SetParent(discardPile.transform);
                     // roadClone.photonView.RPC("SyncValues", RpcTarget.All, up, down, left, right, rotation);
                     // roadClone
 
@@ -221,12 +219,16 @@ public class GridManager : MonoBehaviour
                     tiles[x, y] = roadClone;
 
                     // Set keys here
-                    Debug.Log("After sync");
+                    Debug.Log("After sync------------------------------");
                     Debug.Log("Up: " + roadClone.up.Key);
                     Debug.Log("Down: " + roadClone.down.Key);
                     Debug.Log("Left: " + roadClone.left.Key);
                     Debug.Log("Right: " + roadClone.right.Key);
                     Debug.Log("Rotation: " + _rotation);
+                    Debug.Log("----------------------------------------")
+
+                    // Add to discard pile after everything
+                    roadClone.transform.SetParent(discardPile.transform);
                 }
             }
         }
