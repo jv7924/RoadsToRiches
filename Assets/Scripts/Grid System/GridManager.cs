@@ -225,7 +225,7 @@ public class GridManager : MonoBehaviour
                     Debug.Log("Left: " + roadClone.left.Key);
                     Debug.Log("Right: " + roadClone.right.Key);
                     Debug.Log("Rotation: " + _rotation);
-                    Debug.Log("----------------------------------------")
+                    Debug.Log("----------------------------------------");
 
                     // Add to discard pile after everything
                     roadClone.transform.SetParent(discardPile.transform);
