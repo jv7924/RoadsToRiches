@@ -171,10 +171,4 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             gridManager.GameWon(returnValue);
         }
     }
-
-    [PunRPC]
-    public void RPC_InstantiateRoad(Vector3 position, Quaternion rotation)
-    {
-        Instantiate(tilePrefab, position + new Vector3(0, .05f, 0), rotation);
-    }
 }

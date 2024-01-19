@@ -26,6 +26,15 @@ public class Road : MonoBehaviour
     public int rotation;
     protected Guid uniqueID;
 
+    public PhotonView photonView;
+
+    /// <summary>
+    /// This function is called when the object becomes enabled and active.
+    /// </summary>
+    private void OnEnable()
+    {
+        photonView = GetComponent<PhotonView>();
+    }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -55,21 +64,21 @@ public class Road : MonoBehaviour
     }
 
     // Used for updating the values of the class from an rpc
-    [PunRPC]
-    public void RPC_SyncValues(bool _up, bool _down, bool _left, bool _right, int _rotation)
-    {
-        Debug.Log("up: " + _up);
-        Debug.Log("down: " + _down);
-        Debug.Log("left: " + _left);
-        Debug.Log("right: " + _right);
-        Debug.Log("Rotation: " + _rotation);
+    // [PunRPC]
+    // public void RPC_SyncValues(bool _up, bool _down, bool _left, bool _right, int _rotation)
+    // {
+    //     Debug.Log("up: " + _up);
+    //     Debug.Log("down: " + _down);
+    //     Debug.Log("left: " + _left);
+    //     Debug.Log("right: " + _right);
+    //     Debug.Log("Rotation: " + _rotation);
 
-        up = new KeyValuePair<bool, Road>(_up, null);
-        down = new KeyValuePair<bool, Road>(_down, null);
-        left = new KeyValuePair<bool, Road>(_left, null);
-        right = new KeyValuePair<bool, Road>(_right, null);
-        rotation = _rotation;
-    }
+    //     up = new KeyValuePair<bool, Road>(_up, null);
+    //     down = new KeyValuePair<bool, Road>(_down, null);
+    //     left = new KeyValuePair<bool, Road>(_left, null);
+    //     right = new KeyValuePair<bool, Road>(_right, null);
+    //     rotation = _rotation;
+    // }
 
     // Retrieves the unique ID for the class instance
     public Guid GetGuid()
