@@ -182,6 +182,16 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    public void DeleteFromList(GameObject boardTile)
+    {
+        Debug.Log("name" + boardTile.name);
+        string[] coords = boardTile.name.Split(' ');
+        int x = int.Parse(coords[1]);
+        int y = int.Parse(coords[2]);
+        tiles[x, y] = null;
+        Debug.Log(tiles[x, y]);
+    }
+
     [PunRPC]
     public void RPC_addToList(string name, string roadName, bool _up, bool _down, bool _left, bool _right, int _rotation)
     {

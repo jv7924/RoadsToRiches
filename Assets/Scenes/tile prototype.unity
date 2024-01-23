@@ -34144,15 +34144,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2aa4244637c26843ab4b8c6b8b6966f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  probabilityBins: 030000000d0000002a0000004700000064000000
+  probabilityBins: 020000000c00000029000000480000006300000064000000
   players:
   - {fileID: 354969903}
   - {fileID: 1555541596}
-  roadBlock: {fileID: 8007290240261638502, guid: 263129a5ccdd0e7459efabd279d8bbbb, type: 3}
-  fourWay: {fileID: 3946532959989071735, guid: 6807cd3d5ef4e7a4faf6281189e09acd, type: 3}
-  tIntersection: {fileID: 6924438976136577727, guid: 933c2bf552f716c47bb1b1a726e3e51e, type: 3}
-  bendedTurn: {fileID: 2791998800565049613, guid: db9b343507931d54f887ffda8339859a, type: 3}
-  straight: {fileID: 7793862359425332703, guid: 5a939f59c2d842447a115bfae0a07380, type: 3}
+  cards:
+  - {fileID: 8007290240261638502, guid: 263129a5ccdd0e7459efabd279d8bbbb, type: 3}
+  - {fileID: 3946532959989071735, guid: 6807cd3d5ef4e7a4faf6281189e09acd, type: 3}
+  - {fileID: 6924438976136577727, guid: 933c2bf552f716c47bb1b1a726e3e51e, type: 3}
+  - {fileID: 2791998800565049613, guid: db9b343507931d54f887ffda8339859a, type: 3}
+  - {fileID: 7793862359425332703, guid: 5a939f59c2d842447a115bfae0a07380, type: 3}
+  - {fileID: 3946532959989071735, guid: 97aebb283f6dbfa49abf4c3221a5ed51, type: 3}
   cardAnim: {fileID: 8745715745003805928}
 --- !u!4 &1504505328
 Transform:

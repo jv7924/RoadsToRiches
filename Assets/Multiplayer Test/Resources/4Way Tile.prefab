@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 661410726961955394}
   m_Layer: 0
   m_Name: 4Way Tile
-  m_TagString: Untagged
+  m_TagString: Road
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

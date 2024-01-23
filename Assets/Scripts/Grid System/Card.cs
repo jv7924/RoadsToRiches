@@ -114,11 +114,11 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     // gameObject.GetPhotonView().RPC("RPC_InstantiateRoad", RpcTarget.Others, hit.transform.position, hit.transform.rotation);
 
                     eventData.pointerDrag.transform.SetParent(discardPile.transform);
-                    // gridManager.addToList(hit.transform.name, road);    // offline
-                    gridManager.photonView.RPC("RPC_addToList", RpcTarget.All, hit.transform.name, road.name, road.up.Key, road.down.Key, road.left.Key, road.right.Key, rotation);
+                    gridManager.addToList(hit.transform.name, road);    // offline
+                    //gridManager.photonView.RPC("RPC_addToList", RpcTarget.All, hit.transform.name, road.name, road.up.Key, road.down.Key, road.left.Key, road.right.Key, rotation);
                     tile.transform.Rotate(0, rotation, 0);
-                    // offlineTurnSystem.ChangeTurn(); // offline
-                    OnlineTurnSystem.instance.photonView.RPC("RPC_IncrementTurn", RpcTarget.AllBuffered);
+                    offlineTurnSystem.ChangeTurn(); // offline
+                    //OnlineTurnSystem.instance.photonView.RPC("RPC_IncrementTurn", RpcTarget.AllBuffered);
                     gridManager.PlayDrawSound();
                     // Destroy(eventData.pointerDrag);
                 }

@@ -5,14 +5,14 @@ using UnityEngine;
 public class OfflineTurnSystem : MonoBehaviour
 {   
     [SerializeField]
-    private int[] probabilityBins = new int[5];
+    private int[] probabilityBins;
     //[SerializeField] private GameObject hand;
     
     [SerializeField]
     public GameObject[] players;
 
     [SerializeField]
-    private GameObject roadBlock, fourWay, tIntersection, bendedTurn, straight;
+    private GameObject[] cards;
 
     [SerializeField]
     private Animation cardAnim;
@@ -63,28 +63,33 @@ public class OfflineTurnSystem : MonoBehaviour
         GameObject newRoad;
         if(percent < probabilityBins[0]) //Road Block
         {
-            newRoad = Instantiate(roadBlock) as GameObject;
+            newRoad = Instantiate(cards[0]) as GameObject;
             newRoad.transform.SetParent(hand.transform);
         }
         else if(percent < probabilityBins[1]) //4 Way
         {
-            newRoad = Instantiate(fourWay) as GameObject;
+            newRoad = Instantiate(cards[1]) as GameObject;
             newRoad.transform.SetParent(hand.transform);
         }
         else if(percent < probabilityBins[2]) //T Intersection
         {
-            newRoad = Instantiate(tIntersection) as GameObject;
+            newRoad = Instantiate(cards[2]) as GameObject;
             newRoad.transform.SetParent(hand.transform);
         }
         else if(percent < probabilityBins[3]) //Bended Turn
         {
-            newRoad = Instantiate(bendedTurn) as GameObject;
+            newRoad = Instantiate(cards[3]) as GameObject;
             newRoad.transform.SetParent(hand.transform);
         }
-        else if(percent < probabilityBins[4]) //Staright
+        else if(percent < probabilityBins[4]) //Straight
         {
-            newRoad = Instantiate(straight) as GameObject;
+            newRoad = Instantiate(cards[4]) as GameObject;
             newRoad.transform.SetParent(hand.transform);
-        }        
+        }
+        else if(percent < probabilityBins[5]) //Bomb
+        {
+            newRoad = Instantiate(cards[5]) as GameObject;
+            newRoad.transform.SetParent(hand.transform);
+        }         
     }
 }

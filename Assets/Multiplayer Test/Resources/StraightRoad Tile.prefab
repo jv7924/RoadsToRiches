@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -808254504305428695}
   m_Layer: 0
   m_Name: StraightRoad Tile
-  m_TagString: Untagged
+  m_TagString: Road
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
