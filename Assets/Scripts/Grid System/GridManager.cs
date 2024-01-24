@@ -85,7 +85,7 @@ public class GridManager : MonoBehaviour
 
         if (winningPlayerNumber != 0)
         {
-                WinCanvas.SetActive(true);
+            WinCanvas.SetActive(true);
             ChipCanvas.SetActive(true);
             player1Canvas.SetActive(false);
             player2Canvas.SetActive(false);

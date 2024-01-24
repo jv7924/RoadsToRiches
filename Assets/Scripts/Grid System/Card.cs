@@ -109,12 +109,6 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 {
                     gridManager.PlayBuildSound();
                     GameObject tile = PhotonNetwork.Instantiate(tilePrefab.name, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
-
-                    Debug.Log("Up: " + tile.GetComponent<Road>().up.Key);
-                    Debug.Log("Down: " + tile.GetComponent<Road>().down.Key);
-                    Debug.Log("Left: " + tile.GetComponent<Road>().left.Key);
-                    Debug.Log("Right: " + tile.GetComponent<Road>().right.Key);
-
                     // eventData.pointerDrag.transform.SetParent(discardPile.transform);
                     gridManager.addToList(hit.transform.name, road);    // offline
                     gridManager.photonView.RPC("RPC_addToList", RpcTarget.Others, hit.transform.name, road.name, road.up.Key, road.down.Key, road.left.Key, road.right.Key, rotation);

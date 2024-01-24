@@ -15,35 +15,30 @@ public class Road : MonoBehaviour
     public KeyValuePair<bool, Road> left;
     public KeyValuePair<bool, Road> right;
 
-    // public bool upKey;
-    // public bool downKey;
-    // public bool leftKey;
-    // public bool rightKey;
+    public bool upKey;
+    public bool downKey;
+    public bool leftKey;
+    public bool rightKey;
 
     // Stores the rotation of the road in degrees
     // Starts at 0 and increases by 90 in the counter-clockwise direction
     protected int rotation;
     protected Guid uniqueID;
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    // private void Update()
-    // {
-    //     upKey = up.Key;
-    //     downKey = down.Key;
-    //     leftKey = left.Key;
-    //     rightKey = right.Key;
-    // }
-
     // Used for updating the values of the class from an rpc
     public void SyncValues(bool _up, bool _down, bool _left, bool _right, int _rotation)
     {
+        Debug.Log("here-----------------------------");
         up = new KeyValuePair<bool, Road>(_up, null);
         down = new KeyValuePair<bool, Road>(_down, null);
         left = new KeyValuePair<bool, Road>(_left, null);
         right = new KeyValuePair<bool, Road>(_right, null);
         rotation = _rotation;
+
+        upKey = up.Key;
+        downKey = down.Key;
+        leftKey = left.Key;
+        rightKey = right.Key;
     }
 
     // Retrieves the unique ID for the class instance
