@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667564, g: 0.48427135, b: 0.5645232, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24316,6 +24316,7 @@ GameObject:
   - component: {fileID: 1028721783}
   - component: {fileID: 1028721782}
   - component: {fileID: 1028721785}
+  - component: {fileID: 1028721786}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -24493,6 +24494,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1028721786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028721781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe67ac056287be46848b3835e7663e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  startPosition: {fileID: 0}
+  minZoom: 80
+  maxZoom: 40
+  cam: {fileID: 1028721783}
+  target: {fileID: 1475806339}
+  distanceToTarget: 10
 --- !u!1001 &1028872021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33517,6 +33537,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472983206}
   m_CullTransparentMesh: 1
+--- !u!4 &1475806339 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 87d57a1270c4ce247a3866ac0e8e3e76, type: 3}
+  m_PrefabInstance: {fileID: 516713648}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1475854637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34144,7 +34169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2aa4244637c26843ab4b8c6b8b6966f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  probabilityBins: 020000000c00000029000000480000006300000064000000
+  probabilityBins: 05000000140000002d000000460000005f00000064000000
   players:
   - {fileID: 354969903}
   - {fileID: 1555541596}

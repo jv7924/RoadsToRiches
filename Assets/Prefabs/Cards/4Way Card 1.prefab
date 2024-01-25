@@ -93,6 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 029fda0d99b334d4f8e1113d4ed71031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotation: 0
+  photonView: {fileID: 0}
 --- !u!114 &8538306957264547533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,6 +113,7 @@ MonoBehaviour:
   road: {fileID: 895165669720053783}
   tilePrefab: {fileID: 8709500209693573224, guid: 8574a523655b9294898fbeb3e6736fa6, type: 3}
   shrink: 0.5
+  winnerText: {fileID: 0}
 --- !u!114 &8961758368613525821
 MonoBehaviour:
   m_ObjectHideFlags: 0
