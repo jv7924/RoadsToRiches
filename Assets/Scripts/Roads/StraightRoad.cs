@@ -8,10 +8,10 @@ public class StraightRoad : Road
     // Start is called before the first frame update
     void Start()
     {
-        up    = new KeyValuePair<bool, Road>(false, null);
-        down  = new KeyValuePair<bool, Road>(false, null);
-        left  = new KeyValuePair<bool, Road>(true, null);
-        right = new KeyValuePair<bool, Road>(true, null);
+        up = false;
+        down = false;
+        left = true;
+        right = true;
         rotation = 0;
         uniqueID = Guid.NewGuid();
     }

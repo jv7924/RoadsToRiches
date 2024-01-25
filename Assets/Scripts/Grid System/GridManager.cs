@@ -182,6 +182,26 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    // public bool addToList(string name, Road road, bool up, bool down, bool left, bool right, int rotation)
+    // {
+    //     road.SyncValues(up, down, left, right, rotation);
+
+    //     string[] coords = name.Split(' ');
+    //     int x = int.Parse(coords[1]);
+    //     int y = int.Parse(coords[2]);
+    //     if(tiles[x, y] != null)
+    //     {
+    //         return false;
+    //     }
+    //     else
+    //     {
+    //         tiles[x, y] = road;
+    //         road.transform.SetParent(discardPile.transform);
+    //         //Debug.Log("tile: " + tiles[x,y]);
+    //         return true;
+    //     }
+    // }
+
     [PunRPC]
     public void RPC_addToList(string name, string roadName, bool up, bool down, bool left, bool right, int rotation)
     {
@@ -207,29 +227,28 @@ public class GridManager : MonoBehaviour
                 if (road.name == roadName)
                 {
                     Road roadClone = Instantiate(road);
-                    roadClone.SyncValues(up, down, left, right, rotation);
+                    // roadClone.SyncValues(up, down, left, right, rotation);
                     
                     // Set keys here
-                    Debug.Log("Up: " + roadClone.up.Key);
-                    Debug.Log("Down: " + roadClone.down.Key);
-                    Debug.Log("Left: " + roadClone.left.Key);
-                    Debug.Log("Right: " + roadClone.right.Key);
+                    // Debug.Log("Up: " + roadClone.up);
+                    // Debug.Log("Down: " + roadClone.down);
+                    // Debug.Log("Left: " + roadClone.left);
+                    // Debug.Log("Right: " + roadClone.right);
                     
-                    if (timesRotated < 0)
-                    {
-                        for (int j = 0; j > timesRotated; j--)
-                        {
-                            roadClone.RotateCounterClock();
-                        }
-                    }
-                    else if(timesRotated > 0)
-                    {
-                        for (int j = 0; j < timesRotated; j++)
-                        {
-                            roadClone.RotateClock();
-                        }
-                    }
-
+                    // if (timesRotated < 0)
+                    // {
+                    //     for (int j = 0; j > timesRotated; j--)
+                    //     {
+                    //         roadClone.RotateCounterClock();
+                    //     }
+                    // }
+                    // else if(timesRotated > 0)
+                    // {
+                    //     for (int j = 0; j < timesRotated; j++)
+                    //     {
+                    //         roadClone.RotateClock();
+                    //     }
+                    // }
 
                     tiles[x, y] = roadClone;
                     roadClone.transform.SetParent(discardPile.transform);
@@ -383,6 +402,10 @@ public class GridManager : MonoBehaviour
                 return true;
             } else
             {
+                // Debug.Log("Up" + road.up);
+                // Debug.Log("Down" + road.down);
+                // Debug.Log("Left" + road.left);
+                // Debug.Log("Right" + road.right);
                 Debug.Log("invalid placement: not all roads are connectable");
                 return false;
             }

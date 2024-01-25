@@ -8,10 +8,10 @@ public class Casino : Road
     // Start is called before the first frame update
     void Start()
     {
-        up    = new KeyValuePair<bool, Road>(true, null);
-        down  = new KeyValuePair<bool, Road>(true, null);
-        left  = new KeyValuePair<bool, Road>(true, null);
-        right = new KeyValuePair<bool, Road>(true, null);
+        up = true;
+        down = true;
+        left = true;
+        right = true;
         rotation = 0;
         uniqueID = Guid.NewGuid();
     }

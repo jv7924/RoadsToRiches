@@ -8,10 +8,10 @@ public class RoadBlock : Road
     // Start is called before the first frame update
     void Start()
     {
-        up    = new KeyValuePair<bool, Road>(false, null);
-        down  = new KeyValuePair<bool, Road>(true, null);
-        left  = new KeyValuePair<bool, Road>(false, null);
-        right = new KeyValuePair<bool, Road>(false, null);
+        up = false;;
+        down = true;
+        left = false;
+        right = false;
         rotation = 0;
         uniqueID = Guid.NewGuid();
     }

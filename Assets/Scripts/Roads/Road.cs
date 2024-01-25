@@ -10,15 +10,10 @@ public class Road : MonoBehaviour
     // and false means that direction cannot be connected to.
     // The value stores a reference to the connected road's Road Class Instance if there is a connection
     // otherwise the value will be null.
-    public KeyValuePair<bool, Road> up;
-    public KeyValuePair<bool, Road> down;
-    public KeyValuePair<bool, Road> left;
-    public KeyValuePair<bool, Road> right;
-
-    public bool upKey;
-    public bool downKey;
-    public bool leftKey;
-    public bool rightKey;
+    public bool up;
+    public bool down;
+    public bool left;
+    public bool right;
 
     // Stores the rotation of the road in degrees
     // Starts at 0 and increases by 90 in the counter-clockwise direction
@@ -29,16 +24,11 @@ public class Road : MonoBehaviour
     public void SyncValues(bool _up, bool _down, bool _left, bool _right, int _rotation)
     {
         Debug.Log("here-----------------------------");
-        up = new KeyValuePair<bool, Road>(_up, null);
-        down = new KeyValuePair<bool, Road>(_down, null);
-        left = new KeyValuePair<bool, Road>(_left, null);
-        right = new KeyValuePair<bool, Road>(_right, null);
+        up = _up;
+        down = _down;
+        left = _left;
+        right = _right;
         rotation = _rotation;
-
-        upKey = up.Key;
-        downKey = down.Key;
-        leftKey = left.Key;
-        rightKey = right.Key;
     }
 
     // Retrieves the unique ID for the class instance
@@ -51,10 +41,10 @@ public class Road : MonoBehaviour
     public void RotateClock()
     {
         // Debug.Log("Rotate CW");
-        KeyValuePair<bool, Road> tempU = up;
-        KeyValuePair<bool, Road> tempD = down;
-        KeyValuePair<bool, Road> tempL = left;
-        KeyValuePair<bool, Road> tempR = right;
+        bool tempU = up;
+        bool tempD = down;
+        bool tempL = left;
+        bool tempR = right;
 
         up = tempL;
         down = tempR;
@@ -69,10 +59,10 @@ public class Road : MonoBehaviour
     public void RotateCounterClock()
     {
         // Debug.Log("Rotate CCW");
-        KeyValuePair<bool, Road> tempU = up;
-        KeyValuePair<bool, Road> tempD = down;
-        KeyValuePair<bool, Road> tempL = left;
-        KeyValuePair<bool, Road> tempR = right;
+        bool tempU = up;
+        bool tempD = down;
+        bool tempL = left;
+        bool tempR = right;
 
         up = tempR;
         down = tempL;
@@ -88,22 +78,22 @@ public class Road : MonoBehaviour
     {
         if (direction == "up")
         {
-            if (up.Key == true && up.Value == null) { return true; }
+            if (up == true) { return true; }
             else { return false; }
         }
         else if (direction == "down")
         {
-            if (down.Key == true && down.Value == null) { return true; }
+            if (down == true) { return true; }
             else { return false; }
         }
         else if (direction == "left")
         {
-            if (left.Key == true && left.Value == null) { return true; }
+            if (left == true) { return true; }
             else { return false; }
         }
         else if (direction == "right")
         {
-            if (right.Key == true && right.Value == null) { return true; }
+            if (right == true) { return true; }
             else { return false; }
         }
         else 
@@ -121,7 +111,7 @@ public class Road : MonoBehaviour
         {
             if (CheckIfPossibleConnection(direction) == true)
             {
-                up = new KeyValuePair<bool, Road>(true, road);
+                up = true;
                 return true;
             }
             else { return false; }
@@ -130,7 +120,7 @@ public class Road : MonoBehaviour
         {
             if (CheckIfPossibleConnection(direction) == true)
             {
-                down = new KeyValuePair<bool, Road>(true, road);
+                down = true;
                 return true;
             }
             else { return false; }
@@ -139,7 +129,7 @@ public class Road : MonoBehaviour
         {
             if (CheckIfPossibleConnection(direction) == true)
             {
-                left = new KeyValuePair<bool, Road>(true, road);
+                left = true;
                 return true;
             }
             else { return false; }
@@ -148,7 +138,7 @@ public class Road : MonoBehaviour
         {
             if (CheckIfPossibleConnection(direction) == true)
             {
-                right = new KeyValuePair<bool, Road>(true, road);
+                right = true;
                 return true;
             }
             else { return false; }
