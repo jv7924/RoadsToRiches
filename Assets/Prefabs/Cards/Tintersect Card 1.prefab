@@ -172,8 +172,9 @@ MonoBehaviour:
   offlineTurnSystem: {fileID: 0}
   discardPile: {fileID: 0}
   road: {fileID: 3065389386196457807}
-  tilePrefab: {fileID: 5486992922669795158, guid: eabbd99842bb2f945bdb0193ebbdd4d5, type: 3}
+  tilePrefab: {fileID: 6125990652214819355, guid: a8012b5411f5196428fd5fc73c5d9d3b, type: 3}
   shrink: 0.5
+  winnerText: {fileID: 0}
 --- !u!114 &5889568258506397470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa84d304fc2e3044c87b899473ba3b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotation: 0
+  photonView: {fileID: 0}
 --- !u!114 &-6063985336144994804
 MonoBehaviour:
   m_ObjectHideFlags: 0
