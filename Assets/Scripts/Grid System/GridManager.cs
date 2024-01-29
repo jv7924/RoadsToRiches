@@ -97,9 +97,9 @@ public class GridManager : MonoBehaviour
     // Update is called once per frame
     void GenerateGrid()
     {
-        for(int x = 0; x < width; x++)
+        for (int x = 0; x < width; x++)
         {
-            for(int y = 0; y < height; y++)
+            for (int y = 0; y < height; y++)
             {
                 var spawnedTile = Instantiate(tilePrefab, new Vector3(-x, 0, -y), Quaternion.identity);
                 spawnedTile.name = $"Tile {x} {y}";
@@ -108,21 +108,21 @@ public class GridManager : MonoBehaviour
                 var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
                 spawnedTile.Init(isOffset);
 
-                if(x == 1 && y == 1)
+                if (x == 1 && y == 1)
                 {
                     var card = Instantiate(casino1);
                     Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
                     addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
                     card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
                 }
-                else if(x == width - 2 && y == height - 2)
+                else if (x == width - 2 && y == height - 2)
                 {
                     var card = Instantiate(casino2);
                     Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
                     addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
                     card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
                 }
-                else if(x == width / 2 && y == height / 2)
+                else if (x == width / 2 && y == height / 2)
                 {
                     var card = Instantiate(airport);
                     Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
@@ -140,9 +140,9 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                if(tiles[x, y] != null)
+                if (tiles[x, y] != null)
                 {
-                    Debug.Log("(" + x + "," + y + ") = " + tiles[x, y] + tiles[x,y].up);
+                    Debug.Log("(" + x + "," + y + ") = " + tiles[x, y] + tiles[x, y].up);
                 }
             }
         }
@@ -169,12 +169,17 @@ public class GridManager : MonoBehaviour
         string[] coords = name.Split(' ');
         int x = int.Parse(coords[1]);
         int y = int.Parse(coords[2]);
-        if(tiles[x, y] != null)
+        if (tiles[x, y] != null)
         {
             return false;
         }
         else
         {
+            Debug.Log("Up: " + road.up);
+            Debug.Log("Down: " + road.down);
+            Debug.Log("Left: " + road.left);
+            Debug.Log("Right: " + road.right);
+
             tiles[x, y] = road;
             road.transform.SetParent(discardPile.transform);
             //Debug.Log("tile: " + tiles[x,y]);
@@ -205,8 +210,6 @@ public class GridManager : MonoBehaviour
     [PunRPC]
     public void RPC_addToList(string name, string roadName, bool up, bool down, bool left, bool right, int rotation)
     {
-        int timesRotated = rotation/90;
-        Debug.Log("Times rotated: " + timesRotated);
         string toRemove = "(Clone)";
         int i = roadName.IndexOf(toRemove);
 
@@ -218,7 +221,7 @@ public class GridManager : MonoBehaviour
         string[] coords = name.Split(' ');
         int x = int.Parse(coords[1]);
         int y = int.Parse(coords[2]);
-        if(tiles[x, y] == null)
+        if (tiles[x, y] == null)
         {
             foreach (Road road in roads)
             {
@@ -227,36 +230,34 @@ public class GridManager : MonoBehaviour
                 if (road.name == roadName)
                 {
                     Road roadClone = Instantiate(road);
-                    // roadClone.SyncValues(up, down, left, right, rotation);
-                    
-                    // Set keys here
-                    // Debug.Log("Up: " + roadClone.up);
-                    // Debug.Log("Down: " + roadClone.down);
-                    // Debug.Log("Left: " + roadClone.left);
-                    // Debug.Log("Right: " + roadClone.right);
-                    
-                    // if (timesRotated < 0)
-                    // {
-                    //     for (int j = 0; j > timesRotated; j--)
-                    //     {
-                    //         roadClone.RotateCounterClock();
-                    //     }
-                    // }
-                    // else if(timesRotated > 0)
-                    // {
-                    //     for (int j = 0; j < timesRotated; j++)
-                    //     {
-                    //         roadClone.RotateClock();
-                    //     }
-                    // }
+
+                    Debug.Log("Before");
+                    Debug.Log("Up: " + roadClone.up);
+                    Debug.Log("Down: " + roadClone.down);
+                    Debug.Log("Left: " + roadClone.left);
+                    Debug.Log("Right: " + roadClone.right);
+
+                    roadClone.SyncValues(up, down, left, right, rotation);
+
+                    Debug.Log("After");
+                    Debug.Log("Up: " + roadClone.up);
+                    Debug.Log("Down: " + roadClone.down);
+                    Debug.Log("Left: " + roadClone.left);
+                    Debug.Log("Right: " + roadClone.right);
 
                     tiles[x, y] = roadClone;
                     roadClone.transform.SetParent(discardPile.transform);
+
+                    Debug.Log("After pt2");
+                    Debug.Log("Up: " + roadClone.up);
+                    Debug.Log("Down: " + roadClone.down);
+                    Debug.Log("Left: " + roadClone.left);
+                    Debug.Log("Right: " + roadClone.right);
                 }
             }
         }
 
-        
+
     }
 
     public bool checkSurroundingCoords(string name, Road road)
@@ -295,7 +296,7 @@ public class GridManager : MonoBehaviour
             }
 
             //Check if all tiles are null
-            if ((tiles[upCoords[0],upCoords[1]] == null) && (tiles[rightCoords[0],rightCoords[1]] == null) && (tiles[downCoords[0],downCoords[1]] == null) && (tiles[leftCoords[0],leftCoords[1]] == null))
+            if ((tiles[upCoords[0], upCoords[1]] == null) && (tiles[rightCoords[0], rightCoords[1]] == null) && (tiles[downCoords[0], downCoords[1]] == null) && (tiles[leftCoords[0], leftCoords[1]] == null))
             {
                 Debug.Log("invalid placement: no surrounding tiles");
                 return false;
@@ -308,99 +309,110 @@ public class GridManager : MonoBehaviour
             bool canLeft = false;
 
             //Check directions
-            if (tiles[upCoords[0],upCoords[1]] != null) //Check up
+            if (tiles[upCoords[0], upCoords[1]] != null) //Check up
             {
-                Road tempRoad = tiles[upCoords[0],upCoords[1]];
+                Road tempRoad = tiles[upCoords[0], upCoords[1]];
                 if ((road.CheckIfPossibleConnection("up") == true) && (tempRoad.CheckIfPossibleConnection("down") == true))
                 {
                     canUp = true;
                     oneConnection = true;
-                } else if ((road.CheckIfPossibleConnection("up") == false) && (tempRoad.CheckIfPossibleConnection("down") == false))
+                }
+                else if ((road.CheckIfPossibleConnection("up") == false) && (tempRoad.CheckIfPossibleConnection("down") == false))
                 {
                     canUp = true;
-                } else 
+                }
+                else
                 {
                     canUp = false;
                 }
-            } else 
+            }
+            else
             {
                 canUp = true;
             }
 
-            if (tiles[rightCoords[0],rightCoords[1]] != null) //Check right
+            if (tiles[rightCoords[0], rightCoords[1]] != null) //Check right
             {
-                Road tempRoad = tiles[rightCoords[0],rightCoords[1]];
+                Road tempRoad = tiles[rightCoords[0], rightCoords[1]];
                 if ((road.CheckIfPossibleConnection("right") == true) && (tempRoad.CheckIfPossibleConnection("left") == true))
                 {
                     oneConnection = true;
                     canRight = true;
-                } else if ((road.CheckIfPossibleConnection("right") == false) && (tempRoad.CheckIfPossibleConnection("left") == false))
+                }
+                else if ((road.CheckIfPossibleConnection("right") == false) && (tempRoad.CheckIfPossibleConnection("left") == false))
                 {
                     canRight = true;
-                } else 
+                }
+                else
                 {
                     canRight = false;
                 }
             }
-             else 
+            else
             {
                 canRight = true;
             }
 
-            if (tiles[downCoords[0],downCoords[1]] != null) //Check down
+            if (tiles[downCoords[0], downCoords[1]] != null) //Check down
             {
-                Road tempRoad = tiles[downCoords[0],downCoords[1]];
+                Road tempRoad = tiles[downCoords[0], downCoords[1]];
                 if ((road.CheckIfPossibleConnection("down") == true) && (tempRoad.CheckIfPossibleConnection("up") == true))
                 {
                     oneConnection = true;
                     canDown = true;
-                } else if ((road.CheckIfPossibleConnection("down") == false) && (tempRoad.CheckIfPossibleConnection("up") == false))
+                }
+                else if ((road.CheckIfPossibleConnection("down") == false) && (tempRoad.CheckIfPossibleConnection("up") == false))
                 {
                     canDown = true;
-                } else 
+                }
+                else
                 {
                     canDown = false;
                 }
             }
-             else 
+            else
             {
                 canDown = true;
             }
 
-            if (tiles[leftCoords[0],leftCoords[1]] != null) //Check left
+            if (tiles[leftCoords[0], leftCoords[1]] != null) //Check left
             {
-                Road tempRoad = tiles[leftCoords[0],leftCoords[1]];
+                Road tempRoad = tiles[leftCoords[0], leftCoords[1]];
                 if ((road.CheckIfPossibleConnection("left") == true) && (tempRoad.CheckIfPossibleConnection("right") == true))
                 {
                     oneConnection = true;
                     canLeft = true;
-                } else if ((road.CheckIfPossibleConnection("left") == false) && (tempRoad.CheckIfPossibleConnection("right") == false))
+                }
+                else if ((road.CheckIfPossibleConnection("left") == false) && (tempRoad.CheckIfPossibleConnection("right") == false))
                 {
                     canLeft = true;
-                } else 
+                }
+                else
                 {
                     canLeft = false;
                 }
-            } else 
+            }
+            else
             {
                 canLeft = true;
             }
-            
-                // DEBUG STATEMENTS
-                // Debug.Log("up " + tempRoad.CheckIfPossibleConnection("up").ToString());
-                // Debug.Log("right " + tempRoad.CheckIfPossibleConnection("right").ToString());
-                // Debug.Log("down " + tempRoad.CheckIfPossibleConnection("down").ToString());
-                // Debug.Log("left " + tempRoad.CheckIfPossibleConnection("left").ToString());
-                // Debug.Log("up " + canUp.ToString());
-                // Debug.Log("right " + canRight.ToString());
-                // Debug.Log("down " + canDown.ToString());
-                // Debug.Log("left " + canLeft.ToString());
-            
+
+            // DEBUG STATEMENTS
+            // Debug.Log("up " + tempRoad.CheckIfPossibleConnection("up").ToString());
+            // Debug.Log("right " + tempRoad.CheckIfPossibleConnection("right").ToString());
+            // Debug.Log("down " + tempRoad.CheckIfPossibleConnection("down").ToString());
+            // Debug.Log("left " + tempRoad.CheckIfPossibleConnection("left").ToString());
+            // Debug.Log("up " + canUp.ToString());
+            // Debug.Log("right " + canRight.ToString());
+            // Debug.Log("down " + canDown.ToString());
+            // Debug.Log("left " + canLeft.ToString());
+
             if (canUp && canRight && canDown && canLeft && oneConnection) //Check all directions
             {
                 Debug.Log("valid placement");
                 return true;
-            } else
+            }
+            else
             {
                 // Debug.Log("Up" + road.up);
                 // Debug.Log("Down" + road.down);
@@ -409,7 +421,8 @@ public class GridManager : MonoBehaviour
                 Debug.Log("invalid placement: not all roads are connectable");
                 return false;
             }
-        } else 
+        }
+        else
         {
             Debug.Log("something here, invalid placement");
             return false;
@@ -474,7 +487,7 @@ public class GridManager : MonoBehaviour
             {
                 return true;
             }
-            
+
         }
         else if (neighboringRoad.y < parentRoad.y)  // Down
         {
@@ -507,7 +520,7 @@ public class GridManager : MonoBehaviour
     // Uses method overloading to pass in default values for the airport coordinates and an empty list
     public int CheckIfWon()
     {
-        return CheckIfWon(new Coordinates(width/2, height/2), new List<Guid>());
+        return CheckIfWon(new Coordinates(width / 2, height / 2), new List<Guid>());
     }
 
     // Recursive function that returns an int for the player who has won or 0 if the game has not been won
@@ -523,20 +536,20 @@ public class GridManager : MonoBehaviour
             return int.Parse(match.Value);  // Returns the number of the casino respective to the winning player
         }
 
-        if (exploredRoads.Contains( tiles[road.x, road.y].GetGuid() ))  // Road has already been explored, return to prevent looping
+        if (exploredRoads.Contains(tiles[road.x, road.y].GetGuid()))  // Road has already been explored, return to prevent looping
         {
             return 0;
         }
         else
         {
-            exploredRoads.Add( tiles[road.x, road.y].GetGuid() );
+            exploredRoads.Add(tiles[road.x, road.y].GetGuid());
         }
 
         int returnValue = 0;
         foreach (Coordinates coords in GetNeighboringRoadCoords(road))  // Iterate through all neighboring roads
         {
             // Make sure the roads are not only neighboring, but also have streets connecting
-            if ( CheckIfRoadsAreConnected(road, coords) == true )
+            if (CheckIfRoadsAreConnected(road, coords) == true)
             {
                 returnValue = CheckIfWon(coords, exploredRoads);
                 if (returnValue != 0) { break; }  // Break if we've found a casino, the game has been won

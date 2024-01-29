@@ -110,8 +110,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     gridManager.PlayBuildSound();
                     GameObject tile = PhotonNetwork.Instantiate(tilePrefab.name, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
                     // eventData.pointerDrag.transform.SetParent(discardPile.transform);
-                    gridManager.addToList(hit.transform.name, road);    // offline
-                    gridManager.photonView.RPC("RPC_addToList", RpcTarget.Others, hit.transform.name, road.name, road.up, road.down, road.left, road.right, rotation);
+                    // gridManager.addToList(hit.transform.name, road);    // offline
+                    gridManager.photonView.RPC("RPC_addToList", RpcTarget.All, hit.transform.name, road.name, road.up, road.down, road.left, road.right, rotation);
                     // GameObject tile = Instantiate(tilePrefab, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation); // offline
                     tile.transform.Rotate(0, rotation, 0);
                     // offlineTurnSystem.ChangeTurn(); // offline
