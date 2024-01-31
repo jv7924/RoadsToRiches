@@ -17,7 +17,10 @@ public class BombCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private OfflineTurnSystem offlineTurnSystem;
 
     [SerializeField]
-    public GameObject discardPile;
+    private GameObject explosion;
+
+    [SerializeField]
+    private GameObject discardPile;
 
     private Transform parent;
 
@@ -40,6 +43,7 @@ public class BombCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         gridManager = FindObjectOfType<GridManager>();
         offlineTurnSystem = FindObjectOfType<OfflineTurnSystem>();
         discardPile = GameObject.FindWithTag("Discard Pile");
+        explosion = GameObject.Find("Explosion VFX");
 
         //Win Screen
         //tempText = GameObject.Find("WinnerText");
@@ -71,11 +75,17 @@ public class BombCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         RaycastHit hitTile;
         if (Physics.Raycast(ray, out hitRoad, 1000))
         {
+            Debug.Log(hitRoad.transform.gameObject.name);
             if(hitRoad.transform.gameObject.CompareTag("Road"))
             {
                 int layerMask = 1 << 7;
                 if (Physics.Raycast(ray, out hitTile, 1000, layerMask))
                 {
+                    explosion.transform.position = hitTile.transform.position;
+                    foreach(ParticleSystem vfx in explosion.GetComponentsInChildren<ParticleSystem>())
+                    {
+                        vfx.Play();
+                    }
                     Destroy(hitRoad.transform.gameObject);
                     gridManager.DeleteFromList(hitTile.transform.gameObject);
                     transform.SetParent(discardPile.transform);
