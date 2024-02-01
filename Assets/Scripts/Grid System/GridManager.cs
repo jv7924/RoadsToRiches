@@ -111,21 +111,21 @@ public class GridManager : MonoBehaviour
                 if (x == 1 && y == 1)
                 {
                     var card = Instantiate(casino1);
-                    Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
+                    Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position, spawnedTile.transform.rotation);
                     addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
                     card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
                 }
                 else if (x == width - 2 && y == height - 2)
                 {
                     var card = Instantiate(casino2);
-                    Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
+                    Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position, spawnedTile.transform.rotation);
                     addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
                     card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
                 }
                 else if (x == width / 2 && y == height / 2)
                 {
                     var card = Instantiate(airport);
-                    Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position + new Vector3(0, .05f, 0), spawnedTile.transform.rotation);
+                    Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position, spawnedTile.transform.rotation);
                     addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
                     card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
                 }

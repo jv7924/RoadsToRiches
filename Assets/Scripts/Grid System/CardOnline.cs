@@ -92,7 +92,7 @@ public class CardOnline : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
                 if(gridManager.checkSurroundingCoords(hit.transform.name, road)) //Check for valid road placement
                 {
                     gridManager.PlayBuildSound();
-                    GameObject tile = PhotonNetwork.Instantiate(tilePrefab.name, hit.transform.position + new Vector3(0, .05f, 0), hit.transform.rotation);
+                    GameObject tile = PhotonNetwork.Instantiate(tilePrefab.name, hit.transform.position, hit.transform.rotation);
                     // eventData.pointerDrag.transform.SetParent(discardPile.transform);
                     // gridManager.addToList(hit.transform.name, road);    // offline
                     gridManager.photonView.RPC("RPC_addToList", RpcTarget.AllBuffered, hit.transform.name, road.name);
