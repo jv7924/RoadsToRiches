@@ -6,7 +6,6 @@ public class OfflineTurnSystem : MonoBehaviour
 {   
     [SerializeField]
     private int[] probabilityBins;
-    //[SerializeField] private GameObject hand;
     
     [SerializeField]
     public GameObject[] players;
@@ -29,32 +28,32 @@ public class OfflineTurnSystem : MonoBehaviour
                 DrawCard(players[i]);
             }
         }
-    }
-
-    void Update()
-    {
-        if(turn == 0)
+        for (int i = 1; i < players.Length; i++)
         {
-            players[0].transform.parent.gameObject.SetActive(true);
-            players[1].transform.parent.gameObject.SetActive(false);
-        }
-        else if(turn == 1)
-        {
-            players[0].transform.parent.gameObject.SetActive(false);
-            players[1].transform.parent.gameObject.SetActive(true);
+            players[i].transform.parent.gameObject.SetActive(false);
         }
     }
 
     public void ChangeTurn()
     {
-        string anim = "Card Draw Player " + (turn + 1);
-        cardAnim.Play(anim);
+        if(players.Length == 2)
+        {
+            string anim = "Card Draw Player " + (turn + 1);
+            cardAnim.Play(anim);
+        }
+        else if(players.Length == 4)
+        {
+            string anim = "4P Card Draw Player " + (turn + 1);
+            cardAnim.Play(anim);
+        }
         DrawCard(players[turn]);
+        players[turn].transform.parent.gameObject.SetActive(false);
         turn += 1;
         if(turn >= players.Length)
         {
             turn = 0;
         }
+        players[turn].transform.parent.gameObject.SetActive(true);
     }
 
     void DrawCard(GameObject hand)

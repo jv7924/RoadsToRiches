@@ -10,6 +10,8 @@ TagManager:
   - Discard Pile
   - WinnerText
   - Road
+  - Player3
+  - Player4
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,10 @@ public class GridManager : MonoBehaviour
     private Tile tilePrefab;
 
     [SerializeField]
-    private GameObject casino1, casino2, airport;
+    private GameObject airport;
+
+    [SerializeField]
+    private GameObject[] casinos;
 
     [SerializeField]
     private Transform cam;
@@ -108,26 +111,67 @@ public class GridManager : MonoBehaviour
                 var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
                 spawnedTile.Init(isOffset);
 
-                if (x == 1 && y == 1)
+                if (casinos.Length == 2)
                 {
-                    var card = Instantiate(casino1);
-                    Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position, spawnedTile.transform.rotation);
-                    addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
-                    card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
+                    if (x == 1 && y == 1)
+                    {
+                        var card = Instantiate(casinos[0]);
+                        Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position, spawnedTile.transform.rotation);
+                        addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
+                        card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
+                    }
+                    else if (x == width - 2 && y == height - 2)
+                    {
+                        var card = Instantiate(casinos[1]);
+                        Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position, spawnedTile.transform.rotation);
+                        addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
+                        card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
+                    }
+                    else if (x == width / 2 && y == height / 2)
+                    {
+                        var card = Instantiate(airport);
+                        Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position, spawnedTile.transform.rotation);
+                        addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
+                        card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
+                    }
                 }
-                else if (x == width - 2 && y == height - 2)
+                else if (casinos.Length == 4)
                 {
-                    var card = Instantiate(casino2);
-                    Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position, spawnedTile.transform.rotation);
-                    addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
-                    card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
-                }
-                else if (x == width / 2 && y == height / 2)
-                {
-                    var card = Instantiate(airport);
-                    Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position, spawnedTile.transform.rotation);
-                    addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
-                    card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
+                    if (x == 1 && y == 1)
+                    {
+                        var card = Instantiate(casinos[0]);
+                        Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position, spawnedTile.transform.rotation);
+                        addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
+                        card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
+                    }
+                    else if (x == width - 2 && y == 1)
+                    {
+                        var card = Instantiate(casinos[1]);
+                        Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position, spawnedTile.transform.rotation);
+                        addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
+                        card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
+                    }
+                    else if (x == 1 && y == height - 2)
+                    {
+                        var card = Instantiate(casinos[2]);
+                        Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position, spawnedTile.transform.rotation);
+                        addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
+                        card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
+                    }
+                    else if (x == width - 2 && y == height - 2)
+                    {
+                        var card = Instantiate(casinos[3]);
+                        Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position, spawnedTile.transform.rotation);
+                        addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
+                        card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
+                    }
+                    else if (x == width / 2 && y == height / 2)
+                    {
+                        var card = Instantiate(airport);
+                        Instantiate(card.GetComponent<Card>().tilePrefab, spawnedTile.transform.position, spawnedTile.transform.rotation);
+                        addToList("Tile " + x + " " + y, card.GetComponent<Card>().road);
+                        card.transform.SetParent(card.GetComponent<Card>().discardPile.transform);
+                    }
                 }
             }
         }
