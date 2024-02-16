@@ -5,14 +5,15 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private Vector3 previousPosition;
-    private bool cameraMove = false;
-    [SerializeField] private int speed = 2;
+    //private bool cameraMove = false;
+    [SerializeField] private int speed;
     [SerializeField] private GameObject startPosition;
+    [SerializeField] private int startZoom = 60;
     [SerializeField] private float minZoom;
     [SerializeField] private float maxZoom; 
     [SerializeField] private Camera cam;
     [SerializeField] private Transform target;
-    [SerializeField] private float distanceToTarget = 10;
+    //[SerializeField] private float distanceToTarget = 10;
 
     void Start()
     {
@@ -22,12 +23,12 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         //Rotate Camera
-        cam.transform.position = target.position;
-        if (Input.GetMouseButtonDown(2))
+        //cam.transform.position = target.position;
+        if (Input.GetMouseButtonDown(1))
         {
             previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
         }
-        if (Input.GetMouseButton(2))
+        if (Input.GetMouseButton(1))
         {
             Vector3 direction = previousPosition - cam.ScreenToViewportPoint(Input.mousePosition);
 
@@ -36,7 +37,7 @@ public class CameraController : MonoBehaviour
             
             previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
         }
-        cam.transform.Translate(new Vector3(0,0,-distanceToTarget));
+        //cam.transform.Translate(new Vector3(0,0,-distanceToTarget));
 
         //Zoom In
         if (Input.GetAxis("Mouse ScrollWheel")>0 && (cam.fieldOfView > maxZoom))
@@ -50,7 +51,20 @@ public class CameraController : MonoBehaviour
             cam.fieldOfView++;
         }
 
+        //WASD Movement
+        Vector3 inputDir = new Vector3(0,0,0);
+        if (Input.GetKey(KeyCode.W)) inputDir.z += 1f;
+        if (Input.GetKey(KeyCode.S)) inputDir.z -= 1f;
+        if (Input.GetKey(KeyCode.A)) inputDir.x -= 1f;
+        if (Input.GetKey(KeyCode.D)) inputDir.x += 1f;
+        Vector3 moveDir = transform.forward * inputDir.z + transform.right * inputDir.x;
+        transform.position += moveDir * speed * Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Z)) speed += 1;
+        if (Input.GetKeyDown(KeyCode.X)) speed -= 1;
+
         //Reset Camera
+        /*
         if (cameraMove)
         {
             //cam.transform.position = Vector3.Lerp(cam.transform.position, startPosition.transform.position, speed * Time.deltaTime);
@@ -61,12 +75,13 @@ public class CameraController : MonoBehaviour
         {
             cameraMove = false;
         }
+        */
 
         if (Input.GetKeyDown("r"))
         {
             cam.transform.position = startPosition.transform.position;
             cam.transform.rotation = startPosition.transform.rotation;
-            cam.fieldOfView = 60;
+            cam.fieldOfView = startZoom;
             //cameraMove = true;
         }
     }
