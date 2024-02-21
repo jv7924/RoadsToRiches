@@ -7,11 +7,14 @@ using Photon.Pun;
 
 public class GridManager : MonoBehaviour
 {
+
     [SerializeField]
     private int width, height, camHeight, camOffset;
 
     [SerializeField]
-    private Tile tilePrefab;
+    private Tile tilePrefabEven;
+    [SerializeField]
+    private Tile tilePrefabOdd;
 
     [SerializeField]
     private GameObject airport;
@@ -104,7 +107,7 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                var spawnedTile = Instantiate(tilePrefab, new Vector3(-x, 0, -y), Quaternion.identity);
+                var spawnedTile = Instantiate(((x + y) % 2 == 0) ? tilePrefabEven : tilePrefabOdd, new Vector3(-x, 0, -y), Quaternion.identity);
                 spawnedTile.name = $"Tile {x} {y}";
                 spawnedTile.tag = "Board";
 
