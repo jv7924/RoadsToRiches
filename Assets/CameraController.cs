@@ -57,8 +57,13 @@ public class CameraController : MonoBehaviour
         if (Input.GetKey(KeyCode.S)) inputDir.z -= 1f;
         if (Input.GetKey(KeyCode.A)) inputDir.x -= 1f;
         if (Input.GetKey(KeyCode.D)) inputDir.x += 1f;
-        Vector3 moveDir = transform.forward * inputDir.z + transform.right * inputDir.x;
+        if (Input.GetKey(KeyCode.Space)) inputDir.y += 1f;
+        if (Input.GetKey(KeyCode.LeftControl)) inputDir.y -= 1f;
+
+        Vector3 moveDir = transform.forward * inputDir.z + transform.right * inputDir.x + transform.up * inputDir.y;
         transform.position += moveDir * speed * Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.P)) Debug.Log(cam.transform.rotation.eulerAngles.y);
 
         if (Input.GetKeyDown(KeyCode.Z)) speed += 1;
         if (Input.GetKeyDown(KeyCode.X)) speed -= 1;

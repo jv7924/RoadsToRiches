@@ -14345,11 +14345,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1993929253820724008, guid: 30ee43d4b6ecf08409a363c115eff133, type: 3}
   m_PrefabInstance: {fileID: 430492167}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &431814096 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 87d57a1270c4ce247a3866ac0e8e3e76, type: 3}
-  m_PrefabInstance: {fileID: 516713648}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &436569639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24632,7 +24627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  startPosition: {fileID: 431814096}
+  startPosition: {fileID: 1772584713}
   startZoom: 60
   minZoom: 80
   maxZoom: 40
@@ -39772,6 +39767,37 @@ Transform:
   - {fileID: 1780389311}
   m_Father: {fileID: 815780353}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1772584713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1772584714}
+  m_Layer: 0
+  m_Name: CameraStartingPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1772584714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772584713}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.000000030908623, y: -0.7071068, z: 0.7071068, w: -0.000000030908623}
+  m_LocalPosition: {x: -5, y: 13, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1774147850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53250,6 +53276,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1028721784}
+  - {fileID: 1772584714}
   - {fileID: 1352650412}
   - {fileID: 1284948647}
   - {fileID: 1132185710}
