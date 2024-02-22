@@ -25,6 +25,9 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     [SerializeField]
     public GameObject tilePrefab;
 
+    [SerializeField] 
+    private GameObject cam;
+
     private Transform parent;
 
     private Vector3 originalSize;
@@ -43,6 +46,11 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private GameObject winCanvas;
     private GameObject chipsCanvas;
 
+    private bool rotated0 = true;
+    private bool rotated1 = false;
+    private bool rotated2 = false;
+    private bool rotated3 = false;
+
     void Awake()
     {
         rotation = 0;
@@ -51,6 +59,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         gridManager = FindObjectOfType<GridManager>();
         offlineTurnSystem = FindObjectOfType<OfflineTurnSystem>();
         discardPile = GameObject.FindWithTag("Discard Pile");
+        cam = GameObject.FindWithTag("MainCamera");
 
         //Win Screen
         //tempText = GameObject.Find("WinnerText");
@@ -76,6 +85,72 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 transform.Rotate(0, 0, 90);
                 rotation -= 90;
                 road.RotateCounterClock();
+            }
+        }
+
+        //Update Card Rotation with Camera Rotation
+        //Rotated0
+        if ((cam.transform.rotation.eulerAngles.y > 135) && (cam.transform.rotation.eulerAngles.y < 225))
+        {
+            if (rotated3)
+            {
+                rotated3 = false;
+                rotated0 = true;
+                transform.Rotate(0, 0, 90);
+            }
+            if (rotated1)
+            {
+                rotated1 = false;
+                rotated0 = true; 
+                transform.Rotate(0, 0, -90);
+            }
+        }
+        //Rotated1
+        if ((cam.transform.rotation.eulerAngles.y > 225) && (cam.transform.rotation.eulerAngles.y < 315))
+        {
+            if (rotated0) 
+            {
+                rotated0 = false;
+                rotated1 = true;
+                transform.Rotate(0, 0, 90);
+            }
+            if (rotated2)
+            {
+                rotated2 = false;
+                rotated1 = true; 
+                transform.Rotate(0, 0, -90);
+            }
+        }
+        //Rotated2
+        if (((cam.transform.rotation.eulerAngles.y > 315) && (cam.transform.rotation.eulerAngles.y < 360) || (cam.transform.rotation.eulerAngles.y > 0) && (cam.transform.rotation.eulerAngles.y < 45)))
+        {
+            if (rotated1) 
+            {
+                rotated1 = false;
+                rotated2 = true;
+                transform.Rotate(0, 0, 90);
+            }
+            if (rotated3)
+            {
+                rotated3 = false;
+                rotated2 = true; 
+                transform.Rotate(0, 0, -90);
+            }
+        }
+        //Rotated3
+        if ((cam.transform.rotation.eulerAngles.y > 45) && (cam.transform.rotation.eulerAngles.y < 135))
+        {
+            if (rotated2) 
+            {
+                rotated2 = false;
+                rotated3 = true;
+                transform.Rotate(0, 0, 90);
+            }
+            if (rotated0)
+            {
+                rotated0 = false;
+                rotated3 = true; 
+                transform.Rotate(0, 0, -90);
             }
         }
     }
