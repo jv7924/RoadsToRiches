@@ -49,7 +49,8 @@ MonoBehaviour:
   offlineTurnSystem: {fileID: 0}
   discardPile: {fileID: 0}
   road: {fileID: 3980306461948280368}
-  tilePrefab: {fileID: 4902218902057869265, guid: f67914fc1146f46438f595ab1b332067, type: 3}
+  tilePrefab: {fileID: 4902218902057869265, guid: c827312e387433b4fa6747ae3eb00c40, type: 3}
+  cam: {fileID: 0}
   shrink: 0
   winnerText: {fileID: 0}
 --- !u!114 &3980306461948280368
