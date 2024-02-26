@@ -25141,11 +25141,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   startPosition: {fileID: 431814096}
+  startZoom: 60
   minZoom: 80
   maxZoom: 40
   cam: {fileID: 1028721783}
   target: {fileID: 1475806339}
-  distanceToTarget: 10
 --- !u!1001 &1028872021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30703,7 +30703,8 @@ MonoBehaviour:
   height: 11
   camHeight: 13
   camOffset: 1
-  tilePrefab: {fileID: -2033162146152313221, guid: 0c7d7bb898f341e409e2dfdd510bd4ac, type: 3}
+  tilePrefabEven: {fileID: -2033162146152313221, guid: 0c7d7bb898f341e409e2dfdd510bd4ac, type: 3}
+  tilePrefabOdd: {fileID: -2033162146152313221, guid: 8f85430e99e859743812303705481836, type: 3}
   airport: {fileID: 6747602867035133170, guid: ae1ab2768b6d60e4893a46223029a32b, type: 3}
   casinos:
   - {fileID: 5519241340438565020, guid: ae1db99ee3cf8264fb3a6e553bc75976, type: 3}
