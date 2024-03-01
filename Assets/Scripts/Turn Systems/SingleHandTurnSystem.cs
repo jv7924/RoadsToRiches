@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class OfflineTurnSystem : MonoBehaviour
+public class SingleHandTurnSystem : TurnSystem
 {   
     [SerializeField]
     private int[] probabilityBins;
     
     [SerializeField]
-    public GameObject[] players;
+    private int players;
+
+    [SerializeField]
+    private GameObject hand;
+
+    [SerializeField]
+    private TextMeshProUGUI tmp;
 
     [SerializeField]
     private GameObject[] cards;
@@ -21,39 +28,22 @@ public class OfflineTurnSystem : MonoBehaviour
     void Start()
     {
         turn = 0;
-        for(int i = 0; i < players.Length; i++)
+        for(int j = 0; j < 5; j++)
         {
-            for(int j = 0; j < 5; j++)
-            {
-                DrawCard(players[i]);
-            }
-        }
-        for (int i = 1; i < players.Length; i++)
-        {
-            players[i].transform.parent.gameObject.SetActive(false);
+            DrawCard(hand);
         }
     }
 
-    public void ChangeTurn()
+    public override void ChangeTurn()
     {
-        if(players.Length == 2)
-        {
-            string anim = "Card Draw Player " + (turn + 1);
-            cardAnim.Play(anim);
-        }
-        else if(players.Length == 4)
-        {
-            string anim = "4P Card Draw Player " + (turn + 1);
-            cardAnim.Play(anim);
-        }
-        DrawCard(players[turn]);
-        players[turn].transform.parent.gameObject.SetActive(false);
+        cardAnim.Play("Card Draw Player 1");
+        DrawCard(hand);
         turn += 1;
-        if(turn >= players.Length)
+        if(turn >= players)
         {
             turn = 0;
         }
-        players[turn].transform.parent.gameObject.SetActive(true);
+        tmp.text = "Player " + (turn + 1);
     }
 
     void DrawCard(GameObject hand)

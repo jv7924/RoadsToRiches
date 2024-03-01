@@ -14,7 +14,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private GridManager gridManager;
 
     [SerializeField]
-    private OfflineTurnSystem offlineTurnSystem;
+    private TurnSystem turnSystem;
 
     [SerializeField]
     public GameObject discardPile;
@@ -57,7 +57,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         originalSize = transform.localScale * 2;
         shrinkSize = originalSize * shrink;
         gridManager = FindObjectOfType<GridManager>();
-        offlineTurnSystem = FindObjectOfType<OfflineTurnSystem>();
+        turnSystem = FindObjectOfType<TurnSystem>();
         discardPile = GameObject.FindWithTag("Discard Pile");
         cam = GameObject.FindWithTag("MainCamera");
 
@@ -192,7 +192,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     gridManager.addToList(hit.transform.name, road);    // offline
                     //gridManager.photonView.RPC("RPC_addToList", RpcTarget.All, hit.transform.name, road.name, road.up.Key, road.down.Key, road.left.Key, road.right.Key, rotation);
                     tile.transform.Rotate(0, rotation, 0);
-                    offlineTurnSystem.ChangeTurn(); // offline
+                    parent.gameObject.SetActive(true);
+                    turnSystem.ChangeTurn(); // offline
                     //OnlineTurnSystem.instance.photonView.RPC("RPC_IncrementTurn", RpcTarget.AllBuffered);
                     gridManager.PlayDrawSound();
                     // Destroy(eventData.pointerDrag);
