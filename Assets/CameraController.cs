@@ -65,8 +65,8 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P)) Debug.Log(cam.transform.rotation.eulerAngles.y);
 
-        if (Input.GetKeyDown(KeyCode.Z)) speed += 1;
-        if (Input.GetKeyDown(KeyCode.X)) speed -= 1;
+        if (Input.GetKeyDown(KeyCode.Z) && speed != 10) speed += 1;
+        if (Input.GetKeyDown(KeyCode.X) && speed != 1) speed -= 1;
 
         //Reset Camera
         /*
