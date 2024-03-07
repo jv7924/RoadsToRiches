@@ -66,6 +66,7 @@ MonoBehaviour:
   offlineTurnSystem: {fileID: 0}
   explosion: {fileID: 0}
   discardPile: {fileID: 0}
+  explosionShakeData: {fileID: 11400000, guid: e93dd0db9fbd66c4887ff55fc2cfe928, type: 2}
   shrink: 0.5
   winnerText: {fileID: 0}
 --- !u!114 &89858689956009311

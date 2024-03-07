@@ -7,6 +7,7 @@ using Photon.Pun;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System;
+using FirstGearGames.SmoothCameraShaker;
 
 public class BombCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -21,6 +22,9 @@ public class BombCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     [SerializeField]
     private GameObject discardPile;
+
+    [SerializeField]
+    private ShakeData explosionShakeData;
 
     private Transform parent;
 
@@ -86,6 +90,7 @@ public class BombCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                     {
                         vfx.Play();
                     }
+                    CameraShakerHandler.Shake(explosionShakeData);   // Play camera shake animation
                     Destroy(hitRoad.transform.gameObject);
                     gridManager.DeleteFromList(hitTile.transform.gameObject);
                     transform.SetParent(discardPile.transform);
