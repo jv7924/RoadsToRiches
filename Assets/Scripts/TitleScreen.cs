@@ -7,7 +7,7 @@ public class TitleScreen : MonoBehaviour
 {
     public void LoadOfflineScene()
     {
-        SceneManager.LoadScene("tile prototype");
+        SceneManager.LoadScene("Classic 2P");
     }
 
     public void LoadOnlineScene()
