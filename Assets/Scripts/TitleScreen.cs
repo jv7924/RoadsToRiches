@@ -19,4 +19,21 @@ public class TitleScreen : MonoBehaviour
     {
         SceneManager.LoadScene("Title");
     }
+
+
+    // New Scenes
+    public void LoadClassic2PScene()
+    {
+        SceneManager.LoadScene("Classic 2P");
+    }
+
+    public void LoadClassic4PScene()
+    {
+        SceneManager.LoadScene("Classic 4P");
+    }
+
+    public void LoadSharedHand2PScene()
+    {
+        SceneManager.LoadScene("SingleHand");
+    }
 }
