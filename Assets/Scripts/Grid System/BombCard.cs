@@ -15,7 +15,7 @@ public class BombCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private GridManager gridManager;
 
     [SerializeField]
-    private OfflineTurnSystem offlineTurnSystem;
+    private TurnSystem turnSystem;
 
     [SerializeField]
     private GameObject explosion;
@@ -45,7 +45,7 @@ public class BombCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         originalSize = transform.localScale * 2;
         shrinkSize = originalSize * shrink;
         gridManager = FindObjectOfType<GridManager>();
-        offlineTurnSystem = FindObjectOfType<OfflineTurnSystem>();
+        turnSystem = FindObjectOfType<TurnSystem>();
         discardPile = GameObject.FindWithTag("Discard Pile");
         explosion = GameObject.Find("Explosion VFX");
 
@@ -95,7 +95,7 @@ public class BombCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                     gridManager.DeleteFromList(hitTile.transform.gameObject);
                     transform.SetParent(discardPile.transform);
                     //OnlineTurnSystem.instance.photonView.RPC("RPC_IncrementTurn", RpcTarget.AllBuffered);
-                    offlineTurnSystem.ChangeTurn();
+                    turnSystem.ChangeTurn();
                     gridManager.PlayDrawSound();
                 }
             }            
