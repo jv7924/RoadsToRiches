@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SpeedTurnSystem : TurnSystem
 {
@@ -18,6 +19,9 @@ public class SpeedTurnSystem : TurnSystem
 
     [SerializeField]
     private GameObject discardPile;
+
+    [SerializeField]
+    private TMP_Text timerText;
 
     [SerializeField]
     private float turnTime;
@@ -54,6 +58,7 @@ public class SpeedTurnSystem : TurnSystem
         {
             SkipTurn();
         }
+        timerText.SetText((Mathf.Round((skipTime - Time.time) * 100) / 100.0).ToString());
     }
 
     public override void ChangeTurn()
