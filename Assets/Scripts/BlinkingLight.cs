@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BlinkingLight : MonoBehaviour
 {
-    [SerializeField] private Material whiteMat;
-    [SerializeField] private Material yellowMat;
+    [SerializeField] private Material firstMat;
+    [SerializeField] private Material secondMat;
     [SerializeField] private float blinkInterval = 0.75f; // Time between color changes
 
     private Renderer rend;
@@ -21,9 +21,9 @@ public class BlinkingLight : MonoBehaviour
         while (true)
         {
             // Toggle between white and yellow materials
-            rend.material = whiteMat;
+            rend.material = firstMat;
             yield return new WaitForSeconds(blinkInterval);
-            rend.material = yellowMat;
+            rend.material = secondMat;
             yield return new WaitForSeconds(blinkInterval);
         }
     }
