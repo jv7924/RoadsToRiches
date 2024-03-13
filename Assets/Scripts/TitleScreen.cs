@@ -8,12 +8,22 @@ public class TitleScreen : MonoBehaviour
     // References to the menu canvases
     [SerializeField] private GameObject GameModeSelectionMenu;
     [SerializeField] private GameObject PlayerCountSelectionMenu;
-    [SerializeField] private GameObject TutorialMenu;
+    [SerializeField] private GameObject HowToPlayMenu;
+    [SerializeField] private GameObject GameModeDetailsMenu;
 
     // Variables used for saving the options selected by the player
     private string gameMode = "";
     private string playerCount = "";
 
+
+    // Enable and disable the appropriate canvases at the start
+    void Start()
+    {
+        GameModeSelectionMenu.SetActive(true);
+        PlayerCountSelectionMenu.SetActive(false);
+        HowToPlayMenu.SetActive(false);
+        GameModeDetailsMenu.SetActive(false);
+    }
     
     // Used to enable and disable canvases
     public void MoveMenuForward()
@@ -31,13 +41,25 @@ public class TitleScreen : MonoBehaviour
     public void OpenTutorialMenu()
     {
         GameModeSelectionMenu.SetActive(false);
-        TutorialMenu.SetActive(true);
+        HowToPlayMenu.SetActive(true);
+    }
+
+    public void MoveTutorialMenuForward()
+    {
+        HowToPlayMenu.SetActive(false);
+        GameModeDetailsMenu.SetActive(true);
+    }
+
+    public void MoveTutorialMenuBackward()
+    {
+        HowToPlayMenu.SetActive(true);
+        GameModeDetailsMenu.SetActive(false);
     }
 
     public void CloseTutorialMenu()
     {
         GameModeSelectionMenu.SetActive(true);
-        TutorialMenu.SetActive(false);
+        HowToPlayMenu.SetActive(false);
     }
 
     public void LoadSelectedScene()
