@@ -17794,7 +17794,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameModeSelectionMenu: {fileID: 0}
   PlayerCountSelectionMenu: {fileID: 0}
-  TutorialMenu: {fileID: 0}
+  HowToPlayMenu: {fileID: 0}
+  GameModeDetailsMenu: {fileID: 0}
 --- !u!4 &657673970
 Transform:
   m_ObjectHideFlags: 0
@@ -37741,8 +37742,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: de7a2cebc7b416946a9d129ddc357f58, type: 2}
+  m_sharedMaterial: {fileID: -5857806918543321719, guid: de7a2cebc7b416946a9d129ddc357f58, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

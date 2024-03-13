@@ -1681,7 +1681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &77642503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17888,7 +17888,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameModeSelectionMenu: {fileID: 0}
   PlayerCountSelectionMenu: {fileID: 0}
-  TutorialMenu: {fileID: 0}
+  HowToPlayMenu: {fileID: 0}
+  GameModeDetailsMenu: {fileID: 0}
 --- !u!4 &657673970
 Transform:
   m_ObjectHideFlags: 0
