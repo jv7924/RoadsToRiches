@@ -24,10 +24,10 @@ public class Tile : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        do
-        {
+        // do
+        // {
             
             
-        } while (true);
+        // } while (true);
     }
 }
