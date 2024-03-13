@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridManager: {fileID: 0}
-  offlineTurnSystem: {fileID: 0}
+  turnSystem: {fileID: 0}
   discardPile: {fileID: 0}
   road: {fileID: 3980306461948280368}
-  tilePrefab: {fileID: 4902218902057869265, guid: 20ec3004ef6fbdd43a73821bad9d85b1, type: 3}
+  tilePrefab: {fileID: 4902218902057869265, guid: c827312e387433b4fa6747ae3eb00c40, type: 3}
   cam: {fileID: 0}
   shrink: 0
   winnerText: {fileID: 0}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class SingleHandTurnSystem : TurnSystem
@@ -18,10 +19,28 @@ public class SingleHandTurnSystem : TurnSystem
     private TextMeshProUGUI tmp;
 
     [SerializeField]
+    private TextMeshProUGUI tmp2;
+
+    [SerializeField]
     private GameObject[] cards;
 
     [SerializeField]
     private Animation cardAnim;
+
+    [SerializeField]
+    private Image casinoImage;
+
+    [SerializeField]
+    private Sprite p1Sprite;
+
+    [SerializeField]
+    private Sprite p2Sprite;
+
+    [SerializeField]
+    private Sprite p3Sprite;
+
+    [SerializeField]
+    private Sprite p4Sprite;
 
     private int turn;
 
@@ -44,6 +63,25 @@ public class SingleHandTurnSystem : TurnSystem
             turn = 0;
         }
         tmp.text = "Player " + (turn + 1);
+        tmp2.text = "Player " + (turn + 1);
+
+        // Change the casino sprite
+        if (turn == 0)
+        {
+            casinoImage.sprite = p1Sprite;
+        }
+        else if (turn == 1)
+        {
+            casinoImage.sprite = p2Sprite;
+        }
+        else if (turn == 2)
+        {
+            casinoImage.sprite = p3Sprite;
+        }
+        else if (turn == 3)
+        {
+            casinoImage.sprite = p4Sprite;
+        }
     }
 
     void DrawCard(GameObject hand)

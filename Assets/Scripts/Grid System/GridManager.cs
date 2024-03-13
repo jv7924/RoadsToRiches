@@ -563,6 +563,7 @@ public class GridManager : MonoBehaviour
             // Casino objects follow the naming convention of "CasinoX Card" where X is an int
             string pattern = @"\d+";  // Looks for one or more digits
             Match match = Regex.Match(tiles[road.x, road.y].name, pattern);  // Gets the first occurence (should only be one anyway)
+            Debug.Log(int.Parse(match.Value));
             return int.Parse(match.Value);  // Returns the number of the casino respective to the winning player
         }
 
