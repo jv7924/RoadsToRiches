@@ -18,16 +18,4 @@ public class Tile : MonoBehaviour
     {
         renderer.material = isOffset ? offsetColor : baseColor;
     }
-
-    /// <summary>
-    /// This function is called when the object becomes enabled and active.
-    /// </summary>
-    private void OnEnable()
-    {
-        // do
-        // {
-            
-            
-        // } while (true);
-    }
 }

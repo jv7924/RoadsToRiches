@@ -12,9 +12,9 @@ public class GridManager : MonoBehaviour
     private int width, height, camHeight, camOffset;
 
     [SerializeField]
-    private Tile tilePrefabEven;
+    private Tile[] tilePrefabsEven;
     [SerializeField]
-    private Tile tilePrefabOdd;
+    private Tile[] tilePrefabsOdd;
 
     [SerializeField]
     private GameObject airport;
@@ -47,6 +47,8 @@ public class GridManager : MonoBehaviour
     public GameObject player1Canvas;
     public GameObject player2Canvas;
     public GameObject turnSystem;
+
+    System.Random random = new System.Random();
 
     public struct Coordinates
     {
@@ -107,7 +109,7 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                var spawnedTile = Instantiate(((x + y) % 2 == 0) ? tilePrefabEven : tilePrefabOdd, new Vector3(-x, 0, -y), Quaternion.identity);
+                var spawnedTile = Instantiate(((x + y) % 2 == 0) ? tilePrefabsEven[random.Next(0, 5)] : tilePrefabsOdd[random.Next(0, 5)], new Vector3(-x, 0, -y), Quaternion.identity);
                 spawnedTile.name = $"Tile {x} {y}";
                 spawnedTile.tag = "Board";
 

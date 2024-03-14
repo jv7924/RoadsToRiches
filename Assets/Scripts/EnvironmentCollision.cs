@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class EnvironmentCollision : MonoBehaviour
 {
-    [SerializeField]
-    private LayerMask environment;
-
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Debug.Log("Hell");
     }
 
     // Update is called once per frame
@@ -25,9 +22,11 @@ public class EnvironmentCollision : MonoBehaviour
     /// <param name="other">The other Collider involved in this collision.</param>
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Environment"))
-        {
-            
-        }
+        if (other.CompareTag("Road")    || 
+            other.CompareTag("Player1") || 
+            other.CompareTag("Player2") || 
+            other.CompareTag("Player3") || 
+            other.CompareTag("Player4"))
+            Destroy(gameObject);
     }
 }

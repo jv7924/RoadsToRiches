@@ -57,6 +57,7 @@ MonoBehaviour:
   baseColor: {fileID: 0}
   offsetColor: {fileID: 0}
   renderer: {fileID: 0}
+  environmentModels: []
 --- !u!114 &-5159733177140064901
 MonoBehaviour:
   m_ObjectHideFlags: 0

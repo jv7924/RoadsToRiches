@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.0301731, g: 0.9856444, b: 0.8693367, a: 1}
+  m_IndirectSpecularColor: {r: 1.0314437, g: 0.9869669, b: 0.8705559, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17888,7 +17888,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameModeSelectionMenu: {fileID: 0}
   PlayerCountSelectionMenu: {fileID: 0}
-  TutorialMenu: {fileID: 0}
+  HowToPlayMenu: {fileID: 0}
+  GameModeDetailsMenu: {fileID: 0}
 --- !u!4 &657673970
 Transform:
   m_ObjectHideFlags: 0
@@ -30524,8 +30525,18 @@ MonoBehaviour:
   height: 11
   camHeight: 13
   camOffset: 1
-  tilePrefabEven: {fileID: -2033162146152313221, guid: 0c7d7bb898f341e409e2dfdd510bd4ac, type: 3}
-  tilePrefabOdd: {fileID: -2033162146152313221, guid: 8f85430e99e859743812303705481836, type: 3}
+  tilePrefabsEven:
+  - {fileID: -2033162146152313221, guid: 0c7d7bb898f341e409e2dfdd510bd4ac, type: 3}
+  - {fileID: 2823272751346950878, guid: 8e2c6360b1372044aa9df71e35f8c6fb, type: 3}
+  - {fileID: 2823272751346950878, guid: 36844f99204eb6a4fbe953852f8482d7, type: 3}
+  - {fileID: 2823272751346950878, guid: 0dad44bd965814e4eb629b9804d3e6ab, type: 3}
+  - {fileID: 2823272751346950878, guid: db70937e4ebe3484399f63ed9df25b48, type: 3}
+  tilePrefabsOdd:
+  - {fileID: -2033162146152313221, guid: 8f85430e99e859743812303705481836, type: 3}
+  - {fileID: 5898017288554117891, guid: cf7161a59fb4d63448bbd5041c0bba30, type: 3}
+  - {fileID: 5898017288554117891, guid: 268ea2aee88151247a228b9e89a48d72, type: 3}
+  - {fileID: 5898017288554117891, guid: 6b7122bf77f03f540ae6097a1beb4adf, type: 3}
+  - {fileID: 5898017288554117891, guid: 64a61e04765a8694bbb82f76305701e6, type: 3}
   airport: {fileID: 6747602867035133170, guid: ae1ab2768b6d60e4893a46223029a32b, type: 3}
   casinos:
   - {fileID: 5519241340438565020, guid: ae1db99ee3cf8264fb3a6e553bc75976, type: 3}
