@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class WinCanvas : MonoBehaviour
 {
@@ -9,6 +10,6 @@ public class WinCanvas : MonoBehaviour
 
     public void UpdateText(int playerNumber)
     {
-        win_text.SetText($"Player {playerNumber} has won!");
+        win_text.SetText($"Player {playerNumber} wins!");
     }
 }

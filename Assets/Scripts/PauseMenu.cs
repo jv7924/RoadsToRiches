@@ -7,10 +7,10 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
     [SerializeField] Animator anim;
-    [SerializeField] GameObject p1Canvas;
-    [SerializeField] GameObject p2Canvas;
-    [SerializeField] GameObject p3Canvas;
-    [SerializeField] GameObject p4Canvas;
+    [SerializeField] GameObject p1Canvas = null;
+    [SerializeField] GameObject p2Canvas = null;
+    [SerializeField] GameObject p3Canvas = null;
+    [SerializeField] GameObject p4Canvas = null;
     private bool p1Current = false;
     private bool p2Current = false;
     private bool p3Current = false;
@@ -34,18 +34,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        // anim.SetTrigger("Open");
-        // if (p1Canvas.activeSelf){
-        //     p1Canvas.SetActive(false);
-        //     p1Current = true;
-        // }
-        // if (p2Canvas.activeSelf){
-        //     p2Canvas.SetActive(false);
-        //     p2Current = true;
-        // }
-        // Invoke(nameof(Stop), 0.5f);
-        // isPaused = true;
-
         anim.SetTrigger("Open");
 
         if (p1Canvas.activeSelf){
@@ -67,20 +55,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        // anim.SetTrigger("Close");
-        // if (p1Current) 
-        // {
-        //     p1Canvas.SetActive(true);
-        //     p1Current = false;
-        // }
-        // if (p2Current)
-        // {
-        //     p2Canvas.SetActive(true);
-        //     p2Current = false;
-        // }
-        // Time.timeScale = 1f;
-        // isPaused = false;
-
         anim.SetTrigger("Close");
 
         if (p1Current) 
@@ -95,7 +69,7 @@ public class PauseMenu : MonoBehaviour
         {
             p3Canvas.SetActive(true);
             p3Current = false;
-        } else if (p2Current)
+        } else if (p4Current)
         {
             p4Canvas.SetActive(true);
             p4Current = false;

@@ -40,12 +40,14 @@ public class GridManager : MonoBehaviour
 
     [SerializeField]
     private GameObject discardPile;
-
+    
     private int winningPlayerNumber;
     public GameObject WinCanvas;
-    public GameObject ChipCanvas;
-    public GameObject player1Canvas;
-    public GameObject player2Canvas;
+    public GameObject player1Canvas = null;
+    public GameObject player2Canvas = null;
+    public GameObject player3Canvas = null;
+    public GameObject player4Canvas = null;
+
     public GameObject turnSystem;
 
     System.Random random = new System.Random();
@@ -91,18 +93,27 @@ public class GridManager : MonoBehaviour
             }
         }
 
+        //Check Winning Player
         if (winningPlayerNumber != 0)
         {
             WinCanvas.SetActive(true);
-            ChipCanvas.SetActive(true);
-            player1Canvas.SetActive(false);
-            player2Canvas.SetActive(false);
+            if (player1Canvas != null) {
+                player1Canvas.SetActive(false);
+            }
+            if (player2Canvas != null) {
+                player2Canvas.SetActive(false);
+            }
+            if (player3Canvas != null) {
+                player3Canvas.SetActive(false);
+            }
+            if (player4Canvas != null) {
+                player4Canvas.SetActive(false);
+            }
             turnSystem.SetActive(false);
             WinCanvas.GetComponent<WinCanvas>().UpdateText(winningPlayerNumber);
         }
     }
 
-    // Update is called once per frame
     void GenerateGrid()
     {
         for (int x = 0; x < width; x++)

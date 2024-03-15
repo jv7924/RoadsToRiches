@@ -5,15 +5,9 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private Vector3 previousPosition;
-    //private bool cameraMove = false;
     [SerializeField] private int speed;
     [SerializeField] private GameObject startPosition;
-    [SerializeField] private int startZoom = 60;
-    [SerializeField] private float minZoom;
-    [SerializeField] private float maxZoom; 
     [SerializeField] private Camera cam;
-    [SerializeField] private Transform target;
-    //[SerializeField] private float distanceToTarget = 10;
 
     void Start()
     {
@@ -23,7 +17,6 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         //Rotate Camera
-        //cam.transform.position = target.position;
         if (Input.GetMouseButtonDown(1))
         {
             previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
@@ -36,19 +29,6 @@ public class CameraController : MonoBehaviour
             cam.transform.Rotate(new Vector3(0,1,0), -direction.x*180, Space.World);
             
             previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
-        }
-        //cam.transform.Translate(new Vector3(0,0,-distanceToTarget));
-
-        //Zoom In
-        if (Input.GetAxis("Mouse ScrollWheel")>0 && (cam.fieldOfView > maxZoom))
-        {
-            cam.fieldOfView--;
-        }
-
-        //Zoom Out
-        if (Input.GetAxis("Mouse ScrollWheel")<0 && (cam.fieldOfView < minZoom))
-        {
-            cam.fieldOfView++;
         }
 
         //WASD Movement
@@ -69,25 +49,10 @@ public class CameraController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) && speed != 1) speed -= 1;
 
         //Reset Camera
-        /*
-        if (cameraMove)
-        {
-            //cam.transform.position = Vector3.Lerp(cam.transform.position, startPosition.transform.position, speed * Time.deltaTime);
-            //cam.transform.rotation = Quaternion.Lerp(cam.transform.rotation, startPosition.transform.rotation, speed * Time.deltaTime);
-        }
-
-        if (cam.transform.rotation == startPosition.transform.rotation)
-        {
-            cameraMove = false;
-        }
-        */
-
         if (Input.GetKeyDown("r"))
         {
             cam.transform.position = startPosition.transform.position;
             cam.transform.rotation = startPosition.transform.rotation;
-            cam.fieldOfView = startZoom;
-            //cameraMove = true;
         }
     }
 }
