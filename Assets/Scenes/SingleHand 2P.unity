@@ -25919,7 +25919,7 @@ MonoBehaviour:
   cam: {fileID: 1028721784}
   audio: {fileID: 1284948648}
   drawSound: {fileID: 8300000, guid: c3fd3f8ae46133042b854182f5a25533, type: 3}
-  buildSound: {fileID: 8300000, guid: f80a3d689d6f66946b8682805f7e7c98, type: 3}
+  buildSound: {fileID: 8300000, guid: 852ea00f152f2324b8e6e47514609ac3, type: 3}
   photonView: {fileID: 0}
   roads: []
   discardPile: {fileID: 720915626}
