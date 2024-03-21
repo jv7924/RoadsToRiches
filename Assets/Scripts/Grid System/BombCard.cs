@@ -96,6 +96,7 @@ public class BombCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                     transform.SetParent(discardPile.transform);
                     //OnlineTurnSystem.instance.photonView.RPC("RPC_IncrementTurn", RpcTarget.AllBuffered);
                     turnSystem.ChangeTurn();
+                    gridManager.PlayExplosionSound();
                     gridManager.PlayDrawSound();
                 }
             }            

@@ -29,7 +29,7 @@ public class GridManager : MonoBehaviour
     private AudioSource audio;
 
     [SerializeField]
-    private AudioClip drawSound, buildSound;
+    private AudioClip drawSound, buildSound, explosionSound;
 
     private Road[,] tiles;
 
@@ -216,6 +216,11 @@ public class GridManager : MonoBehaviour
     public void PlayBuildSound()
     {
         audio.PlayOneShot(buildSound);
+    }
+
+    public void PlayExplosionSound()
+    {
+        audio.PlayOneShot(explosionSound);
     }
 
     private void PositionCamera()
