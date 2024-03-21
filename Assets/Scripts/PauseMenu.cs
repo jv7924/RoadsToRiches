@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
-    [SerializeField] Animator anim;
+    //[SerializeField] Animator anim;
     [SerializeField] GameObject p1Canvas = null;
     [SerializeField] GameObject p2Canvas = null;
     [SerializeField] GameObject p3Canvas = null;
@@ -34,7 +34,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        anim.SetTrigger("Open");
+        //anim.SetTrigger("Open");
+        pauseMenu.SetActive(true);
 
         if (p1Canvas.activeSelf){
             p1Canvas.SetActive(false);
@@ -49,14 +50,14 @@ public class PauseMenu : MonoBehaviour
             p4Canvas.SetActive(false);
             p4Current = true;
         }
-
-        Invoke(nameof(Stop), 0.5f);
+        Time.timeScale = 0f;
+        //Invoke(nameof(Stop), 0.5f);
     }
 
     public void Resume()
     {
-        anim.SetTrigger("Close");
-
+        //anim.SetTrigger("Close");
+        pauseMenu.SetActive(false);
         if (p1Current) 
         {
             p1Canvas.SetActive(true);
@@ -80,6 +81,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
+        pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         currentScene = SceneManager.GetActiveScene().name; 
         SceneManager.LoadScene(currentScene);
@@ -87,6 +89,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Home(int sceneID)
     {
+        pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneID);
     }

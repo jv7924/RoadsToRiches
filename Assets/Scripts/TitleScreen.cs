@@ -149,4 +149,9 @@ public class TitleScreen : MonoBehaviour
         SceneManager.LoadScene("Title");
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
 }
